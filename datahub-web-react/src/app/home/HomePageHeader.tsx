@@ -26,6 +26,7 @@ import { useUserContext } from '../context/useUserContext';
 import AcrylDemoBanner from './AcrylDemoBanner';
 import DemoButton from '../entity/shared/components/styled/DemoButton';
 import { HALF_SECOND_IN_MS } from '../entity/shared/tabs/Dataset/Queries/utils/constants';
+import { useTranslation } from 'react-i18next';
 
 const Background = styled.div`
     width: 100%;
@@ -145,6 +146,7 @@ function sortRandom() {
 export const HomePageHeader = () => {
     const history = useHistory();
     const entityRegistry = useEntityRegistry();
+    const { t } = useTranslation(['translation', 'theme']);
     const [getAutoCompleteResultsForMultiple, { data: suggestionsData }] = useGetAutoCompleteMultipleResultsLazyQuery();
     const userContext = useUserContext();
     const themeConfig = useTheme();
@@ -283,7 +285,7 @@ export const HomePageHeader = () => {
                     {searchResultsToShow && searchResultsToShow.length > 0 && (
                         <SuggestionsContainer>
                             <SuggestionsHeader>
-                                <SuggestedQueriesText strong>Try searching for</SuggestedQueriesText>
+                                <SuggestedQueriesText strong>{t('home.trySearchingFor')}</SuggestedQueriesText>
                                 <ExploreAllButton type="link" onClick={onClickExploreAll}>
                                     Explore all <StyledRightOutlined />
                                 </ExploreAllButton>

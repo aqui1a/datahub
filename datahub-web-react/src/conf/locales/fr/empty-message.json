@@ -1,0 +1,50 @@
+{
+  "documentation": {
+    "title": "Aucune documentation pour le moment",
+    "description": "Partagez vos connaissance en ajoutant de la documentation et des liens vers des ressources utiles."
+  },
+  "tags": {
+    "title": "Aucun tag pour le moment",
+    "description": "Taguez les entités pour vous aidez à les rendre plus accessible et mettre en valeur leurs attributs principaux."
+  },
+  "terms": {
+    "title": "Aucun terme du glossaire pour le moment",
+    "description": "Ajoutez des termes du glossaire aux entités pour classifier leur données."
+  },
+  "owners": {
+    "title": "Aucun propriétaire pour le moment",
+    "description": "Ajouter des propriétaires vous aide à suivre les responsables de ces données."
+  },
+  "properties": {
+    "title": "Aucune propriétés",
+    "description": "Les propriétés apparaitront ici si elles existent dans vos données."
+  },
+  "queries": {
+    "title": "Aucune requête pour le moment",
+    "description": "Créez, visualisez et partagez vos requêtes courantes pour ce Dataset."
+  },
+  "domain": {
+    "title": "Aucun domaine paramétré",
+    "description": "Groupez les entités liés en vous basant sur votre structure organisationnelle en les ajoutant à un Domaine."
+  },
+  "dataProduct": {
+    "title": "Aucun produit data paramétré",
+    "description": "Groupez les entités liés en vous basant sur des caractéristiques partagées en les ajoutant à un Produit Data."
+  },
+  "contains": {
+    "title": "Ne contient aucun terme de glossaire",
+    "description": "Les termes du glossaire peuvent en contenir d'autre pour représenter une relation du type \"Contient un\"."
+  },
+  "inherits": {
+    "title": "N'hérite d'aucun terme de glossaire",
+    "description": "Les termes du glossaire peuvent hériter d'autre termes pour représenter une relation du type \"Hérite de\"."
+  },
+  "containedBy": {
+    "title": "Présent dans aucun terme du glossaire",
+    "description": "Les termes du glossaire peuvent être présent dans d'autre pour représenter une relation du type \"Contient un\"."
+  },
+  "inheritedBy": {
+    "title": "N'est hérité par aucun terme du glossaire",
+    "description": "Les termes du glossaire peuvent être hérité par d'autre termes pour représenter une relation du type \"Hérite de\"."
+  }
+}

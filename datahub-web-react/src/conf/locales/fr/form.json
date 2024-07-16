@@ -1,0 +1,49 @@
+{
+  "validateMessages": {
+    "default": "Erreur de validation sur le champ '${name}'",
+    "required": "'${name}' est requis",
+    "enum": "'${name}' doit être dans [${enum}]",
+    "whitespace": "'${name}' ne peut pas être vide",
+    "date": {
+      "format": "'${name}' n'est pas un format de date",
+      "parse": "'${name}' ne peut pas être converti en date",
+      "invalid": "'${name}' n'est pas une date valide"
+    },
+    "types": {
+      "string": "'${name}' n'est pas un ${type} valide",
+      "method": "'${name}' n'est pas une ${type} valide",
+      "array": "'${name}' n'est pas un ${type} valide",
+      "object": "'${name}' n'est pas un ${type} valide",
+      "number": "'${name}' n'est pas un ${type} valide",
+      "date": "'${name}' n'est pas une ${type} valide",
+      "boolean": "'${name}' n'est pas un ${type} valide",
+      "integer": "'${name}' n'est pas un ${type} valide",
+      "float": "'${name}' n'est pas un ${type} valide",
+      "regexp": "'${name}' n'est pas une ${type} valide",
+      "email": "'${name}' n'est pas un ${type} valide",
+      "url": "'${name}' n'est pas une ${type} valide",
+      "hex": "'${name}' n'est pas un ${type} valide"
+    },
+    "string": {
+      "len": "'${name}' doit faire exactement ${len} caractères",
+      "min": "'${name}' doit faire au moins ${min} caractères",
+      "max": "'${name}' doit faire moins de ${max} caractères",
+      "range": "'${name}' doit faire entre ${min} et ${max} caractères"
+    },
+    "number": {
+      "len": "'${name}' doit être égal à ${len}",
+      "min": "'${name}' ne peut être moins que ${min}",
+      "max": "'${name}' ne peut être plus que ${max}",
+      "range": "'${name}' doit être entre ${min} et ${max}"
+    },
+    "array": {
+      "len": "'${name}' doit avoir ${len} éléments",
+      "min": "'${name}' doit avoir au moins ${min} éléments",
+      "max": "'${name}' doit avoir au plus ${max} éléments",
+      "range": "'${name}' doit avoir entre ${min} et ${max} éléments"
+    },
+    "pattern": {
+      "mismatch": "'${name}' ne correspond pas au pattern ${pattern}"
+    }
+  }
+}
