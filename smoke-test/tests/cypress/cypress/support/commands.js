@@ -164,7 +164,7 @@ Cypress.Commands.add("goToDomain", (urn) => {
 
 Cypress.Commands.add("goToAnalytics", () => {
   cy.visit("/analytics");
-  cy.contains("Data Landscape Summary", { timeout: 10000 });
+  cy.contains("Resumo do cenário de dados", { timeout: 10000 });
 });
 
 Cypress.Commands.add("goToUserList", () => {

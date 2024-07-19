@@ -28,6 +28,9 @@ import DemoButton from '../entity/shared/components/styled/DemoButton';
 import { HALF_SECOND_IN_MS } from '../entity/shared/tabs/Dataset/Queries/utils/constants';
 import { useTranslation } from 'react-i18next';
 
+import "./../../i18n";
+import { LanguageSwitcher } from '../../components/LanguageSwitcher';
+
 const Background = styled.div`
     width: 100%;
     background-image: linear-gradient(
@@ -64,6 +67,7 @@ const NavGroup = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
 `;
 
 const SuggestionsContainer = styled.div`
@@ -74,12 +78,14 @@ const SuggestionsContainer = styled.div`
     flex-direction: column;
     justify-content: left;
     align-items: start;
+
 `;
 
 const SuggestionsHeader = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
+
 `;
 
 const SuggestionTagContainer = styled.div`
@@ -144,9 +150,11 @@ function sortRandom() {
 }
 
 export const HomePageHeader = () => {
+    <LanguageSwitcher/>
     const history = useHistory();
     const entityRegistry = useEntityRegistry();
     const { t } = useTranslation(['translation', 'theme']);
+
     const [getAutoCompleteResultsForMultiple, { data: suggestionsData }] = useGetAutoCompleteMultipleResultsLazyQuery();
     const userContext = useUserContext();
     const themeConfig = useTheme();
@@ -236,6 +244,7 @@ export const HomePageHeader = () => {
 
     return (
         <Background>
+            
             <Row justify="space-between" style={styles.navBar}>
                 <WelcomeText>
                     {!!user && (
@@ -244,6 +253,7 @@ export const HomePageHeader = () => {
                         </>
                     )}
                 </WelcomeText>
+                <LanguageSwitcher/>
                 <NavGroup>
                     <HeaderLinks />
                     <ManageAccount

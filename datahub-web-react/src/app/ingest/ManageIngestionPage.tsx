@@ -8,6 +8,7 @@ import {
     INGESTION_CREATE_SOURCE_ID,
     INGESTION_REFRESH_SOURCES_ID,
 } from '../onboarding/config/IngestionOnboardingConfig';
+import { LanguageSwitcher } from '../../components/LanguageSwitcher';
 
 const PageContainer = styled.div`
     padding-top: 20px;
@@ -58,9 +59,9 @@ export const ManageIngestionPage = () => {
         <PageContainer>
             <OnboardingTour stepIds={[INGESTION_CREATE_SOURCE_ID, INGESTION_REFRESH_SOURCES_ID]} />
             <PageHeaderContainer>
-                <PageTitle level={3}>Manage Data Sources</PageTitle>
+                <PageTitle level={3}>Gerenciar fontes de dados</PageTitle>
                 <Typography.Paragraph type="secondary">
-                    Configure and schedule syncs to import data from your data sources
+                Configure e agende sincronizações para importar dados de suas fontes de dados
                 </Typography.Paragraph>
             </PageHeaderContainer>
             <StyledTabs activeKey={selectedTab} size="large" onTabClick={(tab: string) => onClickTab(tab)}>

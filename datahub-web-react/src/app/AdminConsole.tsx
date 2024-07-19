@@ -7,6 +7,7 @@ import Sider from 'antd/lib/layout/Sider';
 import { useAppConfig } from './useAppConfig';
 import { ANTD_GRAY } from './entity/shared/constants';
 import { useUserContext } from './context/useUserContext';
+import { LanguageSwitcher } from '../components/LanguageSwitcher';
 
 const ToggleContainer = styled.div`
     background-color: ${ANTD_GRAY[4]};
@@ -65,7 +66,9 @@ export const AdminConsole = (): JSX.Element => {
     return (
         <>
             {showAdminConsole && (
+                
                 <ControlSlideOut
+                
                     zeroWidthTriggerStyle={{ top: '50%' }}
                     collapsible
                     collapsed={!adminConsoleOpen}

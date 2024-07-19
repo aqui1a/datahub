@@ -1,0 +1,50 @@
+{
+  "documentation": {
+    "title": "Nenhuma documentação no momento",
+    "description": "Compartilhe seus conhecimentos adicionando documentação e links para recursos úteis."
+  },
+  "tags": {
+    "title": "Nenhuma tag no momento",
+    "description": "Marque as entidades para ajudar a torná-las mais acessíveis e destacar seus principais atributos."
+  },
+  "terms": {
+    "title": "Nenhum termo do glossário no momento",
+    "description": "Adicione termos do glossário às entidades para classificar seus dados."
+  },
+  "owners": {
+    "title": "Nenhum proprietário no momento",
+    "description": "Adicionar proprietários ajuda a rastrear os responsáveis por esses dados."
+  },
+  "properties": {
+    "title": "Nenhuma propriedade",
+    "description": "As propriedades aparecerão aqui se existirem em seus dados."
+  },
+  "queries": {
+    "title": "Nenhuma consulta no momento",
+    "description": "Crie, visualize e compartilhe suas consultas frequentes para este Conjunto de Dados."
+  },
+  "domain": {
+    "title": "Nenhum domínio configurado",
+    "description": "Agrupe as entidades relacionadas com base na sua estrutura organizacional adicionando-as a um Domínio."
+  },
+  "dataProduct": {
+    "title": "Nenhum produto de dados configurado",
+    "description": "Agrupe as entidades relacionadas com base em características compartilhadas adicionando-as a um Produto de Dados."
+  },
+  "contains": {
+    "title": "Não contém nenhum termo do glossário",
+    "description": "Os termos do glossário podem conter outros para representar uma relação do tipo \"Contém um\"."
+  },
+  "inherits": {
+    "title": "Não herda de nenhum termo do glossário",
+    "description": "Os termos do glossário podem herdar de outros termos para representar uma relação do tipo \"Herde de\"."
+  },
+  "containedBy": {
+    "title": "Não está contido em nenhum termo do glossário",
+    "description": "Os termos do glossário podem estar contidos em outros para representar uma relação do tipo \"Contido em\"."
+  },
+  "inheritedBy": {
+    "title": "Não é herdado por nenhum termo do glossário",
+    "description": "Os termos do glossário podem ser herdados por outros termos para representar uma relação do tipo \"Herdado por\"."
+  }
+}

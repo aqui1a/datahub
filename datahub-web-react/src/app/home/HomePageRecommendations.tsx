@@ -184,7 +184,7 @@ export const HomePageRecommendations = ({ user }: Props) => {
                             </DomainsRecomendationContainer>
                         </>
                     )}
-                    <RecommendationTitle level={4}>Explore your data</RecommendationTitle>
+                    <RecommendationTitle level={4}>Explore seus dados</RecommendationTitle>
                     <ThinDivider />
                     {hasIngestedMetadata ? (
                         <BrowseCardContainer>
@@ -219,7 +219,7 @@ export const HomePageRecommendations = ({ user }: Props) => {
                         </BrowseCardContainer>
                     ) : (
                         <NoMetadataContainer>
-                            <NoMetadataEmpty description="No Metadata Found 😢" />
+                            <NoMetadataEmpty description="Nenhum metadado encontrado 😢" />
                         </NoMetadataContainer>
                     )}
                 </RecommendationContainer>

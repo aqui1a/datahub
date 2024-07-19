@@ -10,6 +10,7 @@
     "ingestionTitle": "Connect DataHub to your organization's data sources",
     "settingsTitle": "Manage your DataHub settings"
   },
+  
   "analytics": {
     "chartsFailedToLoad": "Charts failed to load",
     "domainsFailedToLoad": "Domains failed to load",
@@ -54,6 +55,8 @@
     "uniqueValueProportionForColumnIs_component": "Unique value proportion for column <typographyTextStrong>{{columnText}}</typographyTextStrong> is",
     "viewLogic": "View Logic"
   },
+
+
   "authentification": {
     "acceptedInvite": "Accepted invite!",
     "confirmPassword": "Confirm Password",
@@ -705,7 +708,7 @@
       "TopTags": "Top Tags",
       "TopTerms": "Top Glossary Terms"
     },
-    "noMetadata": "No Metadata Found 😢",
+    "noMetadata": "Nnehum metadado encontrado 😢",
     "scheduleDemo": "Schedule a Demo of Managed DataHub",
     "scheduleDemoDescription_component": "DataHub is already the industry's #1 Open Source Data Catalog. <styledLinkDemo>Schedule a demo</styledLinkDemo>  of Acryl DataHub to see the advanced features that take it to the next level or purchase Acryl Cloud on <styledLinkAws>AWS Marketplace</styledLinkAws>!",
     "trySearchingFor": "Try searching for",

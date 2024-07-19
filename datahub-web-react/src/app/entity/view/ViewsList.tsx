@@ -104,7 +104,7 @@ export const ViewsList = () => {
             {error && message.error({ content: `Failed to load Views! An unexpected error occurred.`, duration: 3 })}
             <TabToolbar>
                 <Button type="text" onClick={onClickCreateView}>
-                    <PlusOutlined /> Create new View
+                    <PlusOutlined /> Criar nova visualização
                 </Button>
                 <SearchBar
                     initialQuery=""

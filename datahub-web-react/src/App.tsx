@@ -15,6 +15,9 @@ import { ErrorCodes } from './app/shared/constants';
 import CustomThemeProvider from './CustomThemeProvider';
 import { useCustomTheme } from './customThemeContext';
 
+import "./i18n";
+
+
 /*
     Construct Apollo Client
 */

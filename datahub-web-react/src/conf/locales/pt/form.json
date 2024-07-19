@@ -1,0 +1,49 @@
+{
+  "validateMessages": {
+    "default": "Erro de validação no campo '${name}'",
+    "required": "'${name}' é obrigatório",
+    "enum": "'${name}' deve ser um dos [${enum}]",
+    "whitespace": "'${name}' não pode estar vazio",
+    "date": {
+      "format": "'${name}' é inválido para o formato de data",
+      "parse": "'${name}' não pôde ser interpretado como data",
+      "invalid": "'${name}' é uma data inválida"
+    },
+    "types": {
+      "string": "'${name}' não é um(a) ${type} válido(a)",
+      "method": "'${name}' não é um(a) ${type} válido(a)",
+      "array": "'${name}' não é um(a) ${type} válido(a)",
+      "object": "'${name}' não é um(a) ${type} válido(a)",
+      "number": "'${name}' não é um(a) ${type} válido(a)",
+      "date": "'${name}' não é um(a) ${type} válido(a)",
+      "boolean": "'${name}' não é um(a) ${type} válido(a)",
+      "integer": "'${name}' não é um(a) ${type} válido(a)",
+      "float": "'${name}' não é um(a) ${type} válido(a)",
+      "regexp": "'${name}' não é um(a) ${type} válido(a)",
+      "email": "'${name}' não é um(a) ${type} válido(a)",
+      "url": "'${name}' não é um(a) ${type} válido(a)",
+      "hex": "'${name}' não é um(a) ${type} válido(a)"
+    },
+    "string": {
+      "len": "'${name}' deve ter exatamente ${len} caracteres",
+      "min": "'${name}' deve ter pelo menos ${min} caracteres",
+      "max": "'${name}' não pode ter mais de ${max} caracteres",
+      "range": "'${name}' deve ter entre ${min} e ${max} caracteres"
+    },
+    "number": {
+      "len": "'${name}' deve ser igual a ${len}",
+      "min": "'${name}' não pode ser menor que ${min}",
+      "max": "'${name}' não pode ser maior que ${max}",
+      "range": "'${name}' deve estar entre ${min} e ${max}"
+    },
+    "array": {
+      "len": "'${name}' deve ter exatamente ${len} de comprimento",
+      "min": "'${name}' não pode ter menos de ${min} de comprimento",
+      "max": "'${name}' não pode ter mais de ${max} de comprimento",
+      "range": "'${name}' deve ter entre ${min} e ${max} de comprimento"
+    },
+    "pattern": {
+      "mismatch": "'${name}' não corresponde ao padrão ${pattern}"
+    }
+  }
+}

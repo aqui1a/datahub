@@ -70,7 +70,7 @@ public final class GetChartsResolver implements DataFetcher<List<AnalyticsChartG
               .build(),
           AnalyticsChartGroup.builder()
               .setGroupId("GlobalMetadataAnalytics")
-              .setTitle("Data Landscape Summary")
+              .setTitle("Resumo do cenário de dados")
               .setCharts(getGlobalMetadataAnalyticsCharts(context.getOperationContext()))
               .build());
     } catch (Exception e) {

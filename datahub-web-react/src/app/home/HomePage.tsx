@@ -11,6 +11,7 @@ import {
     HOME_PAGE_PLATFORMS_ID,
     HOME_PAGE_SEARCH_BAR_ID,
 } from '../onboarding/config/HomePageOnboardingConfig';
+import { LanguageSwitcher } from '../../components/LanguageSwitcher';
 
 export const HomePage = () => {
     useEffect(() => {

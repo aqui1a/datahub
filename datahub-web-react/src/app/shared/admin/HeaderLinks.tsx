@@ -85,10 +85,10 @@ export function HeaderLinks(props: Props) {
                 <LinkWrapper>
                     <Link to="/analytics">
                         <Button type="text">
-                            <Tooltip title="View DataHub usage analytics">
+                            <Tooltip title="Ver análises de uso do DataHub">
                                 <NavTitleContainer>
                                     <BarChartOutlined />
-                                    <NavTitleText>Analytics</NavTitleText>
+                                    <NavTitleText>Analises</NavTitleText>
                                 </NavTitleContainer>
                             </Tooltip>
                         </Button>
@@ -103,9 +103,9 @@ export function HeaderLinks(props: Props) {
                             <Link to="/glossary">
                                 <NavTitleContainer>
                                     <BookOutlined style={{ fontSize: '14px', fontWeight: 'bold' }} />
-                                    <NavTitleText>Glossary</NavTitleText>
+                                    <NavTitleText>Glossário</NavTitleText>
                                 </NavTitleContainer>
-                                <NavTitleDescription>View and modify your data dictionary</NavTitleDescription>
+                                <NavTitleDescription>Visualize e modifique seu dicionário de dados</NavTitleDescription>
                             </Link>
                         </MenuItem>
                         <MenuItem key="1">
@@ -117,9 +117,9 @@ export function HeaderLinks(props: Props) {
                                             fontWeight: 'bold',
                                         }}
                                     />
-                                    <NavTitleText>Domains</NavTitleText>
+                                    <NavTitleText>Domínios</NavTitleText>
                                 </NavTitleContainer>
-                                <NavTitleDescription>Manage related groups of data assets</NavTitleDescription>
+                                <NavTitleDescription>Gerencie grupos relacionados de ativos de dados</NavTitleDescription>
                             </Link>
                         </MenuItem>
                         {businessAttributesFlag && (
@@ -132,9 +132,9 @@ export function HeaderLinks(props: Props) {
                                                 fontWeight: 'bold',
                                             }}
                                         />
-                                        <NavTitleText>Business Attribute</NavTitleText>
+                                        <NavTitleText>Atributo de negócio</NavTitleText>
                                     </NavTitleContainer>
-                                    <NavTitleDescription>Universal field for data consistency</NavTitleDescription>
+                                    <NavTitleDescription>Campo universal para consistência de dados</NavTitleDescription>
                                 </Link>
                             </MenuItem>
                         )}
@@ -143,7 +143,7 @@ export function HeaderLinks(props: Props) {
             >
                 <LinkWrapper>
                     <Button type="text">
-                        <SolutionOutlined /> Govern <DownOutlined style={{ fontSize: '6px' }} />
+                        <SolutionOutlined /> Governo <DownOutlined style={{ fontSize: '6px' }} />
                     </Button>
                 </LinkWrapper>
             </Dropdown>
@@ -154,7 +154,7 @@ export function HeaderLinks(props: Props) {
                             <Tooltip title="Connect DataHub to your organization's data sources">
                                 <NavTitleContainer>
                                     <ApiOutlined />
-                                    <NavTitleText>Ingestion</NavTitleText>
+                                    <NavTitleText>Ingestão</NavTitleText>
                                 </NavTitleContainer>
                             </Tooltip>
                         </Button>

@@ -20,6 +20,12 @@ import * as frForm from './conf/locales/fr/form.json';
 import * as frReactCron from './conf/locales/fr/react-cron.json';
 import * as frTheme from './conf/locales/fr/theme.json';
 
+import * as ptTranslation from './conf/locales/pt/translation.json';
+import * as ptEmptyMessage from './conf/locales/pt/empty-message.json';
+import * as ptForm from './conf/locales/pt/form.json';
+import * as ptReactCron from './conf/locales/pt/react-cron.json';
+import * as ptTheme from './conf/locales/pt/theme.json';
+
 const resources = {
     en: {
         translation: enTranslation.default,
@@ -35,6 +41,13 @@ const resources = {
         'react-cron': frReactCron.default,
         theme: frTheme.default,
     },
+    pt: {
+        translation: ptTranslation.default,
+        'empty-message': ptEmptyMessage.default,
+        form: ptForm.default,
+        'react-cron': ptReactCron.default,
+        theme: ptTheme.default,
+    }
 };
 
 i18n
@@ -52,7 +65,7 @@ i18n
     // init i18next
     // for all options read: https://www.i18next.com/overview/configuration-options
     .init({
-        fallbackLng: 'fr',
+        fallbackLng: 'pt',
         debug: true,
         resources,
         interpolation: {
