@@ -141,6 +141,10 @@ export class DatasetEntity implements Entity<Dataset> {
                 {
                     name: 'Lineage',
                     component: LineageTab,
+                    display: {
+                        visible: (_, _1) => false,
+                        enabled: (_, _2) => false,
+                    }
                 },
                 {
                     name: 'Properties',
@@ -158,7 +162,7 @@ export class DatasetEntity implements Entity<Dataset> {
                     name: 'Stats',
                     component: StatsTab,
                     display: {
-                        visible: (_, _1) => true,
+                        visible: (_, _1) => false,
                         enabled: (_, dataset: GetDatasetQuery) =>
                             (dataset?.dataset?.datasetProfiles?.length || 0) > 0 ||
                             (dataset?.dataset?.usageStats?.buckets?.length || 0) > 0 ||
@@ -169,7 +173,7 @@ export class DatasetEntity implements Entity<Dataset> {
                     name: 'Validation',
                     component: ValidationsTab,
                     display: {
-                        visible: (_, _1) => true,
+                        visible: (_, _1) => false,
                         enabled: (_, dataset: GetDatasetQuery) => {
                             return (
                                 (dataset?.dataset?.assertions?.total || 0) > 0 || dataset?.dataset?.testResults !== null
@@ -202,14 +206,14 @@ export class DatasetEntity implements Entity<Dataset> {
                         },
                     },
                 },
-                {
-                    name: 'Incidents',
-                    component: IncidentTab,
-                    getDynamicName: (_, dataset) => {
-                        const activeIncidentCount = dataset?.dataset?.activeIncidents.total;
-                        return `Incidents${(activeIncidentCount && ` (${activeIncidentCount})`) || ''}`;
-                    },
-                },
+                // {
+                //     name: 'Incidents',
+                //     component: IncidentTab,
+                //     getDynamicName: (_, dataset) => {
+                //         const activeIncidentCount = dataset?.dataset?.activeIncidents.total;
+                //         return `Incidents${(activeIncidentCount && ` (${activeIncidentCount})`) || ''}`;
+                //     },
+                // },
             ]}
             sidebarSections={this.getSidebarSections()}
         />
