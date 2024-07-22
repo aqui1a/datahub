@@ -998,30 +998,635 @@
       "mssqlHostAndPortToolTip": "O host e a porta onde o SQL Server está rodando. Por exemplo, 'mssql-server:5432'. Nota: este host deve ser acessível na rede onde o DataHub está rodando (ou permitido por uma Lista de Permissão de IP, AWS PrivateLink, etc.).",
       "mssqlPasswordToolTip": "A senha do SQL Server para o usuário.",
       "mssqlUsernameToolTip": "O nome de usuário do SQL Server usado para extrair metadados."
+    },
+    "mysql": {
+      "mysqlFilterSectionTooltip": "Incluir ou excluir Bancos de Dados, Schemas, Tabelas e Visões específicas da ingestão.",
+      "mysqlHostAndPortToolTip": "O host e a porta onde o MySQL está rodando. Por exemplo, 'localhost:5432'. Nota: este host deve ser acessível na rede onde o DataHub está rodando (ou permitido via uma lista de IPs permitidos, AWS PrivateLink, etc).",
+      "mysqlPasswordToolTip": "A senha do MySQL para o usuário.",
+      "mysqlUsernameToolTip": "O nome de usuário do MySQL usado para extrair metadados."
+    },
+    "noAssetsWereIngested": "Nenhum ativo foi ingerido.",
+    "noExecutionFound": "Nenhuma execução encontrada!",
+    "noIngestionSource": "Nenhuma fonte de ingestão!",
+    "noOutputFound": "Nenhuma saída encontrada.",
+    "noSecretsFound": "Nenhum segredo encontrado",
+    "pleaseAddValidIngestionType": "Por favor, adicione um tipo de ingestão válido",
+    "pleaseCheckYourRecipeConfiguration": "Por favor, verifique a configuração da sua receita.",
+    "pleaseFixRecipeLineWithParsedLine": "Por favor, corrija a linha {{parsedLine}} na sua receita.",
+    "pleaseFixYourRecipe": "Por favor, corrija sua receita",
+    "postgres": {
+      "postgresFilterSectionTooltip": "Incluir ou excluir Schemas, Tabelas e Visões específicas da ingestão.",
+      "postgresHostAndPortToolTip": "O host e a porta onde o Postgres está rodando. Por exemplo, 'postgres:5432'. Nota: este host deve ser acessível na rede onde o DataHub está rodando (ou permitido via uma lista de IPs permitidos, AWS PrivateLink, etc).",
+      "postgresPasswordToolTip": "A senha do Postgres para o usuário.",
+      "postgresUsernameToolTip": "O nome de usuário do Postgres usado para extrair metadados."
+    },
+    "powerBI": {
+      "label": {
+        "extractEndorsementsAsTags": "Extrair Endossos como Tags",
+        "extractOwnership": "Extrair Propriedade",
+        "includeReports": "Incluir Relatórios",
+        "includeWorkspace": "Incluir Espaços de Trabalho",
+        "tenantID": "ID do Inquilino",
+        "useAdminAPIOnly": "Usar Apenas APIs de Admin"
+      },
+      "powerBIAllowPatternToolTip": "Incluir apenas Espaços de Trabalho específicos fornecendo o ID único de um Espaço de Trabalho, ou uma Expressão Regular (REGEX). Se não fornecido, todos os Espaços de Trabalho serão incluídos.",
+      "powerBIAzureClientIDToolTip": "O ID do Cliente do Azure AD",
+      "powerBIAzureClientSecretToolTip": "O Segredo do Cliente do Azure AD",
+      "powerBIAzureTenantIDToolTip": "O ID do inquilino do Azure para sua instância do PowerBI.",
+      "powerBIDenyPatternToolTip": "Excluir Espaços de Trabalho específicos fornecendo o ID único de um Espaço de Trabalho, ou uma Expressão Regular (REGEX). Se não fornecido, todos os Espaços de Trabalho serão incluídos. Padrões de negação sempre têm precedência sobre padrões de permissão.",
+      "powerBIExtractEndorsementsAsTagsToolTip": "Extrair Endossos do PowerBI como Tags do DataHub.",
+      "powerBIExtractOwnershipToolTip": "Extrair Metadados do Proprietário definidos no PowerBI. Acesso à API de Admin é necessário se esta configuração estiver habilitada. Note que habilitar isso pode sobrescrever os proprietários que você adiciona dentro do DataHub.",
+      "powerBIFilterSectionTooltip": "Incluir ou excluir Espaços de Trabalho específicos do PowerBI da ingestão.",
+      "powerBIIncludeLineageToolTip": "Extrair a linhagem entre Conjuntos de Dados do PowerBI e as Tabelas Externas das quais são derivadas.",
+      "powerBIIncludeReportsToolTip": "Extrair Relatórios do PowerBI como nós de Dashboard no DataHub.",
+      "powerBIIncludeWorkspaceToolTip": "Extrair Espaços de Trabalho do PowerBI como nós de Contêiner no DataHub.",
+      "powerBIUseAdminAPIOnlyToolTip": "Usar apenas as APIs de Admin para extrair informações do PowerBI. Consulte o Guia de Fonte de Ingestão do DataHub para mais informações.",
+      "section": {
+        "workspaces": "Espaços de Trabalho"
+      }
+    },
+    "provideTheExecutorIDToRouteRequestToText": "Forneça o ID do executor para direcionar solicitações de execução. O ID do executor interno do DataHub é 'default'. Não altere isso a menos que você tenha configurado um executor personalizado.",
+    "recipeForms": {
+      "buttonLabel": {
+        "addPatterns": "Adicionar Padrões"
+      },
+      "label": {
+        "accountID": "ID da Conta",
+        "allowPatterns": "Padrões de Permissão",
+        "clientID": "ID do Cliente",
+        "clientSecret": "Segredo do Cliente",
+        "database": "Banco de Dados",
+        "denyPatterns": "Padrões de Negação",
+        "extractOwners": "Extrair Proprietários",
+        "githubRepo": "Repositório GitHub",
+        "hostAndPort": "Host e Porta",
+        "includeLineage": "Incluir Linhagem",
+        "password": "Senha",
+        "projectID": "ID do Projeto",
+        "username": "Nome de Usuário"
+      },
+      "presto": {
+        "prestoFilterSectionTooltip": "Incluir ou excluir Schemas, Tabelas e Visões específicas da ingestão.",
+        "prestoHostAndPortToolTip": "O host e a porta onde o Presto está rodando. Por exemplo, 'presto-server:5432'. Nota: este host deve ser acessível na rede onde o DataHub está rodando (ou permitido via uma lista de IPs permitidos, AWS PrivateLink, etc).",
+        "prestoPasswordTooTip": "A senha do Presto para o usuário.",
+        "prestoUsernameToolTip": "O nome de usuário do Presto usado para extrair metadados."
+      },
+      "redshift": {
+        "redshiftFilterSectionTooltip": "Incluir ou excluir Schemas, Tabelas e Visões específicas da ingestão.",
+        "redshiftHostAndPortToolTip": "O host e a porta onde o Redshift está rodando. Por exemplo, 'redshift:5439'. Nota: este host deve ser acessível na rede onde o DataHub está rodando (ou permitido via uma lista de IPs permitidos, AWS PrivateLink, etc).",
+        "redshiftPasswordToolTip": "A senha do nome de usuário.",
+        "redshiftUsernameToolTip": "Um nome de usuário do Redshift usado para extrair metadados."
+      },
+      "section": {
+        "dashboards": "Dashboards",
+        "tables": "Tabelas"
+      },
+      "snowFlake": {
+        "label": {
+          "role": "Função",
+          "warehouse": "Armazém"
+        },
+        "snowFlakeAccountIDToolTip": "O Identificador da Conta do Snowflake, por exemplo, myorg-account123, account123-eu-central-1, account123.west-us-2.azure",
+        "snowFlakeFilterSectionTooltip": "Incluir ou excluir Bancos de Dados, Schemas, Tabelas e Visões específicas da ingestão.",
+        "snowFlakePasswordToolTip": "Senha do Snowflake.",
+        "snowFlakeRoleToolTip": "A Função a ser usada ao extrair metadados do Snowflake.",
+        "snowFlakeUsernameToolTip": "Nome de usuário do Snowflake.",
+        "snowFlakeWarehouseToolTip": "O nome do Armazém do Snowflake de onde extrair metadados."
+      },
+      "tableau": {
+        "buttonLabel": {
+          "addProject": "Adicionar projeto"
+        },
+        "label": {
+          "hostURL": "URL do Host",
+          "projects": "Projetos",
+          "tableauSite": "Site Tableau",
+          "tokenName": "Nome do Token",
+          "tokenValue": "Valor do Token"
+        },
+        "tableauHostUrlToolTip": "A URL onde a instância do Tableau está hospedada.",
+        "tableauPasswordToolTip": "Senha do Tableau. Necessária apenas se o Token não for fornecido.",
+        "tableauProjectToolTip": "A lista de Projetos para extrair metadados.",
+        "tableauSiteToolTip": "O Site Tableau. Necessário para o Tableau Online. Deixe em branco para extrair do site padrão no Tableau Server.",
+        "tableauTokenValueToolTip": "O valor do Token de Acesso Pessoal usado para extrair metadados. Necessário se autenticar usando um Token de Acesso Pessoal.",
+        "tableauUsernameToolTip": "Nome de usuário do Tableau. Necessário apenas se o Token não for fornecido.",
+        "tokenNameToolTip": "O nome do Token de Acesso Pessoal usado para extrair metadados. Necessário se autenticar usando um Token de Acesso Pessoal."
+      },
+      "toolTip": {
+        "ingestMetadataForASpecificDatabase": "Ingerir metadados para um Banco de Dados específico."
+      },
+      "trino": {
+        "trinoFilterSectionTooltip": "Incluir ou excluir Schemas, Tabelas e Visões específicas da ingestão.",
+        "trinoHostAndPortToolTip": "O host e a porta onde o Trino está rodando. Por exemplo, 'trino-server:5432'. Nota: este host deve ser acessível na rede onde o DataHub está rodando (ou permitido via uma lista de IPs permitidos, AWS PrivateLink, etc).",
+        "trinoPasswordToolTip": "A senha do Trino para o usuário.",
+        "trinoUsernameToolTip": "O nome de usuário do Trino usado para extrair metadados."
+      },
+      "unityCatalog": {
+        "includeColumnLineageLabel": "Incluir Linhagem de Colunas",
+        "includeColumnLineageToolTip_component": "Extrair Linhagem de Colunas do Unity Catalog. Note que isso requer que sua conta Databricks atenda a certos requisitos. Veja-os <aLink>aqui.</aLink> Habilitar este recurso pode aumentar a duração da ingestão.",
+        "includeTableLineageLabel": "Incluir Linhagem de Tabelas",
+        "includeTableLineageToolTip_component": "Extrair Linhagem de Tabelas do Unity Catalog. Note que isso requer que sua conta Databricks atenda a certos requisitos. Veja-os <aLink>aqui</aLink>",
+        "section": {
+          "catalogs": "Catálogos",
+          "metastores": "Metastores"
+        },
+        "tokenToolTip": "Um token de acesso pessoal associado à conta Databricks usada para extrair metadados.",
+        "unityCatalogAllowToolTip": "Incluir apenas Catálogos específicos fornecendo o nome de um Catálogo ou uma Expressão Regular (REGEX) para incluir Catálogos específicos. Se não for fornecido, todos os Catálogos serão incluídos.",
+        "unityCatalogDenyToolTip": "Excluir Catálogos específicos fornecendo o nome de um Catálogo ou uma Expressão Regular (REGEX) para excluir Catálogos específicos. Se não for fornecido, todos os Catálogos serão incluídos. Padrões de negação sempre têm precedência sobre padrões de permissão.",
+        "unityFilterSectionTooltip": "Incluir ou excluir Metastores, Catálogos, Schemas e Tabelas específicos da ingestão.",
+        "unityMetaStoreIDAllowButtonLabel": "Adicionar padrão",
+        "unityMetaStoreIDAllowToolTip": "Incluir apenas Metastores específicos fornecendo o id de um Metastore ou uma Expressão Regular (REGEX) para incluir Metastores específicos. Se não for fornecido, todos os Metastores serão incluídos.",
+        "unityMetaStoreIDDenyToolTip": "Excluir Metastores específicos fornecendo o id de um Metastore ou uma Expressão Regular (REGEX). Se não for fornecido, todos os Metastores serão incluídos. Padrões de negação sempre têm precedência sobre padrões de permissão.",
+        "unityTableAllowToolTip": "Incluir apenas Tabelas específicas fornecendo o nome completo de uma Tabela ou uma Expressão Regular (REGEX) para incluir Tabelas específicas. Se não for fornecido, todas as Tabelas serão incluídas.",
+        "unityTableDenyToolTip": "Excluir Tabelas específicas fornecendo o nome completo de uma Tabela ou uma Expressão Regular (REGEX) para excluir Tabelas específicas. Se não for fornecido, todas as Tabelas serão incluídas. Padrões de negação sempre têm precedência sobre padrões de permissão.",
+        "workspaceURLLabel": "URL do Workspace",
+        "workspaceURLTooltip": "O URL do workspace Databricks do qual extrair metadados."
+      }
+    },
+    "recipeViewModalTitle": "Ver Receita de Ingestão",
+    "removedIngestionSource": "Fonte de ingestão removida.",
+    "requestedAt": "Solicitado em",
+    "requestingRollback": "Solicitando reversão",
+    "runAScheduleToolTip": "Habilite para executar a ingestão em um cronograma. Executar a ingestão em um cronograma ajuda a manter as informações dentro do DataHub atualizadas.",
+    "runIngestionWithoutASchedule": "Executar a ingestão sem um cronograma pode resultar em informações desatualizadas.",
+    "runOnASchedule": "Executar em um cronograma",
+    "scheduledExecution": "Execução programada",
+    "searchIngestionSources": "Procurar fontes de ingestão",
+    "searchSecrets": "Procurar segredos...",
+    "searchSources": "Procurar fontes",
+    "secretDescriptionDescription": "Uma descrição opcional para ajudar a manter o controle do seu segredo.",
+    "secretDescriptionInputPlaceholder": "Uma descrição para o seu segredo",
+    "secretFieldToolTip_component": "Este campo exige que você use um Segredo do DataHub. Para mais informações sobre Segredos no DataHub, por favor revise <aLink>os documentos</aLink>.",
+    "secretNameDescription": "Dê um nome ao seu segredo. Este é o nome que você usará para referenciar o segredo em suas receitas.",
+    "secretNameInputPlaceholder": "Um nome para o seu segredo",
+    "secretNameNotAllowed": "Este nome de segredo não é permitido.",
+    "secretNameRulePlaceHolder": "Digite um nome.",
+    "secretValueDescription": "O valor do seu segredo, que será criptografado e armazenado com segurança no DataHub.",
+    "secretValueInputPlaceholder": "O valor do seu segredo",
+    "secretValueRulePlaceholder": "Digite um valor.",
+    "somethingWentWrongWithYourConnectionTest": "Algo deu errado com o teste da sua conexão. Por favor, verifique sua receita e tente novamente.",
+    "startedAt": "Iniciado em",
+    "step": {
+      "chooseType": "Escolher Tipo",
+      "configureRecipe": "Configurar Receita",
+      "finishUp": "Finalizar",
+      "scheduleIngestion": "Programar Ingestão"
+    },
+    "successfullyCreatedIngestionSource": "Fonte de ingestão criada com sucesso!",
+    "successfullyRequestedIngestionRollback": "Reversão de ingestão solicitada com sucesso",
+    "successfullySubmittedCancellationRequest": "Solicitação de cancelamento enviada com sucesso!",
+    "successfullySubmittedIngestionExecutionRequest": "Solicitação de execução de ingestão enviada com sucesso!",
+    "successfullyUpdatedIngestionSource": "Fonte de ingestão atualizada com sucesso!",
+    "testConnection": "Testar Conexão",
+    "testingYourConnection": "Testando sua conexão...",
+    "theFollowingAssetTypesWereIngestedDuringThisRun": "Os seguintes tipos de ativos foram ingeridos durante esta execução.",
+    "theFollowingConnectorCapabilitiesAreSupportedWithYourCredentials": "As seguintes capacidades de conectores são suportadas com suas credenciais",
+    "thereWasAnUnexpectedErrorWhenTryingToTestYourConnection": "Ocorreu um erro inesperado ao tentar testar sua conexão. Por favor, tente novamente.",
+    "thisCouldTakeAFewMinutes": "Isso pode levar alguns minutos.",
+    "toCompleteTheLookerIntegrationTextWithLink_component": "Para completar a integração do Looker (incluindo visualizações do Looker e linhagem para as tabelas de warehouse subjacentes), você deve <bold>também</bold> usar o <link></link>.",
+    "ToGetCompleteLookerMetadataIntegrationText_component": "Para obter a integração completa de metadados do Looker (incluindo visualizações do Looker e linhagem para as tabelas de warehouse subjacentes), você deve <bold>também</bold> usar o <aLink>módulo lookml do DataHub</aLink>.",
+    "ui": "UI",
+    "viewLogsThatWereCollectedDuringTheIngestionRun": "Ver logs que foram coletados durante a execução da ingestão.",
+    "youMustAcknowledgeThisMessageToProceed": "Você deve reconhecer esta mensagem para prosseguir!"
+  },
+  "lineage": {
+    "addEntityPlaceHolderSecondPartWhenNoLength": "entidades para adicionar...",
+    "clickToRefreshData": "Clique para atualizar dados",
+    "clickToSeeColumnPathFrom_interval": "(0-1)[Clique para ver o caminho da coluna de ];(2-inf)[Clique para ver os caminhos das colunas de ]",
+    "collapseRelatedEntitiesIntoASingleLineageNode": "Colapsar entidades relacionadas em um único nó de linhagem",
+    "columnLineage": "Linhagem de Coluna",
+    "compressLineage": "Comprimir Linhagem",
+    "dashboardHasNoDownstreamLineage": "Entidades de dashboard não têm linhagem downstream",
+    "entityDistanceFrom_withName": "Esta entidade é uma conexão de {{distance}} graus com {{name}}",
+    "entityDistanceFrom_withoutName": "Esta entidade é uma conexão de {{distance}} graus com a entidade fonte",
+    "filterLineageByObservedDate": "Filtrar arestas de linhagem por data observada",
+    "findColumn": "Procurar coluna...",
+    "focusOnEntity": "Focar na Entidade",
+    "focusOnThisEntityToMakeEdit_component": "<wrapper>Focar</wrapper> nesta entidade para fazer edições de {{direction}}.",
+    "hideColumnLevelLineage": "Ocultar linhagem de nível de coluna",
+    "manageLineageWithDirection": "Gerenciar Linhagem {{direction}}",
+    "noEntitiesWithDirection": "Sem entidades {{direction}}",
+    "noTimeRangeSelected": "Nenhum intervalo de tempo selecionado",
+    "ordinalSuffix": [
+      "º",
+      "º",
+      "º",
+      "º"
+    ],
+    "platformLogo": "Logo da Plataforma",
+    "seeColumnLineage": "Ver Linhagem de Coluna",
+    "showColumnLevelLineage": "Mostrar linhagem de nível de coluna",
+    "showColumns": "Mostrar Colunas",
+    "showFullTitle": "Mostrar Títulos Completos",
+    "viewGraph": "Ver Gráfico",
+    "visualizeLineage": "Visualizar Linhagem",
+    "youAreNOtAuthToEditLineage": "Você não está autorizado a editar a linhagem desta entidade."
+  },
+  "navigation": {
+    "backToHome": "Voltar para Início",
+    "hidePanel": "Ocultar o painel de navegação",
+    "openPanel": "Abrir o painel de navegação",
+    "viewInWithName": "Ver em {{name}}",
+    "viewLink": "Ver link",
+    "yourProfile": "Seu Perfil"
+  },
+  "onBoarding": {
+    "businessGlossary": {
+      "businessGlossaryCreateTerm_component": "<paraph>Clique aqui para criar um novo <bold>Termo</bold>.</paraph><paraph><bold>Termos</bold> são palavras ou frases com uma definição de negócio específica atribuída a elas.</paraph>",
+      "businessGlossaryCreateTermGroup_component": "<paraph>Clique aqui para criar um novo <bold>Grupo de Termos</bold>.</paraph><paraph><bold>Grupos de Termos</bold> atuam como pastas, contendo Termos e Grupos de Termos aninhados.</paraph><paraph>Por exemplo, pode haver um <bold>Grupo de Termos PII</bold> contendo Termos para diferentes tipos de PII, como <bold>Email</bold> ou <bold>Número de Telefone</bold>.</paraph><paraph>Saiba mais sobre o <bold>Glossário de Negócios</bold> <aLink>aqui.</aLink></paraph>",
+      "businessGlossaryCreateTermGroupTitle": "Grupos de Termos do Glossário",
+      "businessGlossaryCreateTermTitle": "Termos do Glossário",
+      "businessGlossaryIntro_component": "<paraph>Bem-vindo ao <bold>Glossário de Negócios</bold>!</paraph><paraph>O Glossário é uma coleção de rótulos estruturados e padronizados que você pode usar para categorizar ativos de dados. Você pode ver e criar tanto <bold>Termos</bold> quanto <bold>Grupos de Termos</bold> aqui.</paraph>",
+      "businessGlossaryIntroTitle": "Glossário de Negócios 📖"
+    },
+    "domains": {
+      "createDomains_component": "Clique aqui para criar um novo <bold>Domínio</bold>.",
+      "createDomainTitle": "Criar um novo Domínio",
+      "domainIntro_component": "<paraph>Bem-vindo aos <bold>Domínios</bold> do DataHub!</paraph><paraph><bold>Domínios</bold> são coleções de ativos de dados relacionados associados a uma parte específica da sua organização, como o departamento de <bold>Marketing</bold>.</paraph><paraph>Saiba mais sobre <bold>Domínios</bold> <aLink>aqui.</aLink></paraph>"
+    },
+    "entityProfile": {
+      "documentation_component": "<paraph>Você pode ver e editar a <bold>Documentação</bold> de uma entidade nesta aba.</paraph><paraph>A <bold>Documentação</bold> deve fornecer informações descritivas sobre este ativo de dados. Ela também pode conter links para recursos externos.</paraph>",
+      "documentationTitle": "Documentação",
+      "domains_component": "<paraph>Você pode ver e definir o <bold>Domínio</bold> deste ativo aqui.</paraph><paraph><bold>Domínios</bold> são coleções de ativos de dados relacionados associados a uma parte específica da sua organização, como o departamento de <bold>Marketing</bold>.</paraph><paraph>Saiba mais sobre <bold>Domínios</bold> <aLink>aqui.</aLink></paraph>",
+      "entities_component": "Você pode ver as <bold>Entidades</bold> que pertencem a um <bold>Container</bold> nesta aba.",
+      "entitiesTitle": "Aba de Entidades",
+      "glossaryTerm_component": "<paraph>Você pode ver e adicionar <bold>Termos do Glossário</bold> a este ativo aqui.</paraph><paraph><bold>Termos do Glossário</bold> são rótulos estruturados e padronizados para organizar seus dados críticos para a missão. Por exemplo, se você estiver marcando ativos contendo campos PII, pode adicionar o Termo <bold>Email</bold>.</paraph><paraph>Saiba mais sobre <bold>Termos do Glossário</bold> <aLink>aqui.</aLink></paraph>",
+      "lineage_component": "<paraph>Você pode ver a <bold>Linhagem</bold> de uma entidade nesta aba.</paraph><paraph>A <bold>Linhagem de Dados</bold> permite visualizar e entender tanto as dependências upstream quanto os consumidores downstream desta entidade.</paraph><paraph>Se esta aba estiver desativada, a <bold>Linhagem</bold> não foi ingerida para esta entidade.</paraph>",
+      "lineageTitle": "Aba de Linhagem",
+      "owners_component": "<paraph>Você pode ver e adicionar <bold>Proprietários</bold> a este ativo aqui.</paraph><paraph><bold>Proprietários</bold> são <bold>Usuários</bold> ou <bold>Grupos</bold> responsáveis por gerenciar este ativo.</paraph>",
+      "properties_component": "<paraph>Você pode ver as <bold>Propriedades</bold> de chave-valor de uma entidade nesta aba. Estas são originadas da Plataforma de Dados original.</paraph><paraph>Se esta aba estiver desativada, as <bold>Propriedades</bold> não foram ingeridas para esta entidade.</paraph>",
+      "propertiesTitle": "Aba de Propriedades",
+      "schema_component": "<paraph>Você pode ver o <bold>Esquema</bold> de um Dataset nesta aba.</paraph><paraph>Você também pode ver ou adicionar <bold>Documentação</bold>, <bold>Tags</bold> e <bold>Termos do Glossário</bold> para colunas específicas.</paraph>",
+      "schemaTitle": "Aba de Esquema",
+      "tags_component": "<paraph>Você pode ver e adicionar <bold>Tags</bold> a este ativo aqui.</paraph><paraph><bold>Tags</bold> são rótulos para organizar seus dados. Por exemplo, você pode adicionar uma Tag para marcar um ativo como <bold>Crítico para a Missão</bold>.</paraph><paraph>Saiba mais sobre <bold>Tags</bold> <aLink>aqui.</aLink></paraph>"
+    },
+    "groups": {
+      "createGroups_component": "Clique aqui para criar um novo <bold>Grupo</bold>.",
+      "createGroupsTitle": "Criar um novo Grupo",
+      "groupsIntro_component": "<paraph>Bem-vindo aos <bold>Grupos</bold> do Datahub!</paraph><paraph><bold>Grupos</bold> são coleções de usuários que podem ser usados para atribuir propriedade a ativos e gerenciar acesso.</paraph><paraph><bold>Grupos</bold> podem ser criados nativamente dentro do DataHub ou sincronizados do seu Provedor de Identidade.</paraph><paraph>Saiba mais sobre <bold>Grupos</bold> <aLink>aqui.</aLink></paraph>"
+    },
+    "homePage": {
+      "domains_component": "Aqui estão os <bold>Domínios</bold> da sua organização. Domínios são coleções de ativos de dados - como Tabelas, Dashboards e Modelos de ML - que facilitam a descoberta de informações relevantes para uma parte específica da sua organização.",
+      "domainsTitle": "Explore por Domínio",
+      "ingestion_component": "Comece a integrar suas fontes de dados imediatamente navegando até a página de <bold>Ingestão</bold>.",
+      "ingestionTitle": "Ingerir Dados",
+      "mostPopular_component": "Aqui você encontrará os ativos que são mais visualizados dentro da sua organização.",
+      "mostPopularTitle": "Explore os Mais Populares",
+      "platforms_component": "Aqui estão as <bold>Plataformas de Dados</bold> da sua organização. Plataformas de Dados representam Sistemas ou Ferramentas de Dados de terceiros específicos. Exemplos incluem Armazéns de Dados como <bold>Snowflake</bold>, Orquestradores como <bold>Airflow</bold> e ferramentas de Dashboarding como <bold>Looker</bold>.",
+      "platformsTitle": "Explore por Plataforma",
+      "searchBar_component": "<paraph>Esta é a <bold>Barra de Pesquisa</bold>. Ela servirá como seu ponto de partida para descobrir e colaborar em torno dos dados mais importantes para você.</paraph><paraph>Não sabe por onde começar? Clique em <bold>Explorar Tudo</bold>!</paraph>",
+      "searchBarTitle": "Encontre seus Dados 🔍",
+      "welcomeParaph": {
+        "getStarted_component": "Vamos começar! 🚀",
+        "intro_component": "<bold>DataHub</bold> ajuda você a descobrir e organizar os dados importantes dentro da sua organização. Você pode:",
+        "listFeatures": {
+          "defineOwnership_component": "Definir <bold>propriedade</bold> e capturar <bold>conhecimento</bold> para capacitar os outros",
+          "gainInsight_component": "Obter <bold>insights</bold> sobre como outros dentro da sua organização estão usando dados",
+          "quicklySearch_component": "Pesquisar rapidamente <bold>Datasets</bold>, Dashboards, Pipelines de Dados e mais",
+          "viewAndUnderstand_component": "Visualizar e entender toda a <bold>Linagem de ponta a ponta</bold> de como os dados são criados, transformados e consumidos"
+        },
+        "pressKey_component": "Pressione <bold> Cmd + Ctrl + T</bold> para abrir este tutorial a qualquer momento."
+      },
+      "welcomeTitle": "Bem-vindo ao DataHub! 👋"
+    },
+    "ingestion": {
+      "ingestionCreate_component": "<paraph>Configure novas Integrações do DataHub para suas <bold>Plataformas de Dados</bold>, incluindo Bancos de Dados Transacionais como <bold>MySQL</bold>, Armazéns de Dados como <bold>Snowflake</bold>, ferramentas de Dashboarding como <bold>Looker</bold> e mais!</paraph><paraph>Saiba mais sobre ingestão e veja a lista completa de Integrações suportadas <aLink>aqui.</aLink></paraph>",
+      "ingestionCreateTitle": "Criar uma Nova Fonte de Ingestão",
+      "ingestionRefreshSource_component": "Clique para forçar uma atualização das fontes de ingestão em execução.",
+      "ingestionRefreshSourceTitle": "Atualizar Fontes de Ingestão"
+    },
+    "letsGo": "Vamos lá!",
+    "lineageGraph": {
+      "introLineageGraph_component": "<paraph>Você pode visualizar o <bold>Gráfico de Linhagem</bold> para uma entidade nesta página.</paraph><paraph>A <bold>Linhagem</bold> dos dados permite visualizar e entender tanto as dependências anteriores quanto os consumidores subsequentes desta entidade.</paraph><paraph>Saiba mais sobre <bold>Linhagem</bold> <aLink>aqui.</aLink></paraph>",
+      "introLineageGraphTitle": "Gráfico de Linhagem",
+      "timeFilter_component": "Você pode clicar nas datas que deseja ver as arestas de linhagem neste gráfico. Por padrão, o gráfico mostrará as arestas observadas nos últimos 14 dias. Note que as arestas de linhagem manual e as arestas sem informações de tempo sempre serão exibidas.",
+      "timeFilterTitle": "Filtrar Arestas de Linhagem por Data"
+    },
+    "policies": {
+      "createPolicies_component": "Clique aqui para criar uma nova <bold>Política</bold>.",
+      "createPoliciesTitle": "Criar uma nova Política",
+      "introPolicies_component": "<paraph>Bem-vindo às <bold>Políticas</bold> do DataHub!</paraph><paraph>Na maioria dos casos, <bold>Funções</bold> são a melhor opção para conceder privilégios aos usuários do DataHub.</paraph><paraph>Quando um controle mais granular sobre permissões de usuários e grupos é necessário, então as <bold>Políticas</bold> serão a solução.</paraph><paraph>Saiba mais sobre <bold>Políticas</bold> <aLink>aqui.</aLink></paraph>"
+    },
+    "roles": {
+      "introID_component": "<paraph>Bem-vindo às <bold>Funções</bold> do DataHub!</paraph><paraph><bold>Funções</bold> são a maneira recomendada para gerenciar permissões no DataHub.</paraph><paraph>O DataHub atualmente suporta três funções padrão: <bold>Admin</bold>, <bold>Editor</bold> e <bold>Leitor</bold>.</paraph><paraph>Saiba mais sobre <bold>Funções</bold> e as diferentes permissões para cada Função <aLink>aqui.</aLink></paraph>"
+    },
+    "search": {
+      "searchResultAdvancedSearch_component": "<bold>Filtros Avançados</bold> oferecem capacidades adicionais para criar consultas de pesquisa mais específicas.",
+      "searchResultAdvancedSearchTitle": "💪 Aprofunde-se com filtros avançados",
+      "searchResultBrowse_component": "Tem uma ideia clara do esquema ou pasta que está procurando? Navegue facilmente pelas plataformas da sua organização inline. Em seguida, selecione um contêiner específico pelo qual deseja filtrar seus resultados.",
+      "searchResultBrowseTitle": "🧭 Explore e refine sua pesquisa por plataforma",
+      "searchResultFilter_component": "Encontre rapidamente ativos relevantes aplicando um ou mais filtros. Tente filtrar por <bold>Tipo</bold>, <bold>Proprietário</bold> e mais!",
+      "searchResultFilterTitle": "🕵️ Afine sua pesquisa",
+      "searchResultFilterV2_component": "Encontre rapidamente ativos relevantes com nossa nova e aprimorada interface de filtro! Nossa atualização mais recente realocou os filtros para o topo da tela para facilitar o acesso.",
+      "searchResultFilterV2Title": "Filtros Mudaram"
+    },
+    "users": {
+      "usersAssignRoleID_component": "<paraph>Você pode atribuir <bold>Funções</bold> aos <bold>Usuários</bold> existentes aqui.</paraph><paraph>Saiba mais sobre <bold>Funções</bold> <aLink>aqui.</aLink></paraph>",
+      "usersAssignRoleIDTitle": "Atribuindo Funções",
+      "usersIntro_component": "<paraph>Bem-vindo aos <bold>Usuários</bold> do DataHub!</paraph><paraph>Existem algumas maneiras diferentes de integrar novos <bold>Usuários</bold> ao DataHub.</paraph>",
+      "usersInviteLink_component": "<paraph>Compartilhe facilmente um link de convite com seus colegas para integrá-los ao DataHub. Opcionalmente, atribua uma <bold>Função</bold> a quem se juntar usando o link.</paraph><paraph>Saiba mais sobre como configurar links de convite <aLink>aqui.</aLink></paraph>",
+      "usersInviteLinkTitle": "Convidar Novos Usuários",
+      "usersSSO_component": "<paraph>A maneira preferida de integrar novos <bold>Usuários</bold> é usar <bold>Single Sign-On</bold>. Atualmente, o DataHub suporta SSO OIDC.</paraph><paraph>Saiba mais sobre como configurar <bold>Single Sign-On</bold> <aLink>aqui.</aLink></paraph>",
+      "usersSSOTitle": "Configuração do Single Sign-On (SSO)"
     }
+  },
+  "operation": {
+    "fetchingRuns": "Buscando execuções",
+    "runId": "ID da Execução",
+    "viewTaskRunDetails": "Ver detalhes da execução da tarefa"
+  },
+  "ownerType": {
+    "BUSINESS_OWNER": {
+      "description": "Principais partes interessadas ou especialistas de domínio associados ao ativo.",
+      "name": "Proprietário de Negócios"
+    },
+    "DATA_STEWARD": {
+      "description": "Envolvido na governança do ativo.",
+      "name": "Curador de Dados"
+    },
+    "NONE": {
+      "description": "Nenhum tipo de propriedade especificado.",
+      "name": "Nenhum"
+    },
+    "TECHNICAL_OWNER": {
+      "description": "Envolvido na produção, manutenção ou distribuição do ativo.",
+      "name": "Proprietário Técnico"
+    }
+  },
+  "permissions": {
+    "appliesTo": "Aplica-se a",
+    "appliesToWithName": "Aplica-se a {{name}}",
+    "areYouSureRemovePolicy": "Tem certeza de que deseja remover a política?",
+    "assignedRoleToUsers": "Função atribuída aos usuários!",
+    "assignRoleToUsers": "Atribuir a função {{role}} aos usuários",
+    "associatedPolicies": "Políticas Associadas",
+    "createANewPolicy": "Criar uma nova Política",
+    "createNewPolicy": "Criar nova política",
+    "domainDescription": "Pesquise por domínios aos quais a política deve se aplicar. Se <bold>nenhum</bold> for selecionado, a política se aplicará a <bold>todos</bold> os recursos em todos os domínios.",
+    "editAPolicy": "Editar uma Política",
+    "exitPolicyEditorContent": "Tem certeza de que deseja sair do editor de políticas? Todas as alterações serão perdidas",
+    "exitPolicyEditorTitle": "Sair do Editor de Políticas",
+    "failedToLoadPolicies": "Falha ao carregar políticas! Ocorreu um erro inesperado.",
+    "failedToUpdatePolicies": "Falha ao atualizar políticas. Ocorreu um erro inesperado.",
+    "loadingPolicies": "Carregando políticas...",
+    "managePermissions": "Gerenciar Permissões",
+    "managePermissionsDescription": "Visualize suas permissões no DataHub. Execute ações administrativas.",
+    "nameForNewPolicy": "Um nome para sua nova política.",
+    "newPolicyDescription": "Uma descrição opcional para sua nova política.",
+    "noAssignedUsers": "Nenhum usuário atribuído",
+    "noPolicies": "Nenhuma Política!",
+    "noRole": "Nenhuma Função",
+    "noRoles": "Nenhuma Função",
+    "noSearchResultsFound": "Nenhum resultado de pesquisa encontrado",
+    "permissionsTabTypes": {
+      "policies": "Políticas",
+      "roles": "Funções"
+    },
+    "policyAppliesToDescription": "Se esta política deve se aplicar aos proprietários do ativo de Metadados. Se verdadeiro, aqueles que são marcados como proprietários de um Ativo de Metadados, direta ou indiretamente via um Grupo, terão os privilégios selecionados.",
+    "policyAppliesToGroupsDescription": "Pesquise por grupos específicos aos quais esta política deve se aplicar, ou selecione `Todos os Grupos` para aplicá-la a todos os grupos.",
+    "policyAppliesToLabel": "Selecione os usuários e grupos aos quais esta política deve se aplicar.",
+    "policyAppliesToUserDescription": "Pesquise por usuários específicos aos quais esta política deve se aplicar, ou selecione `Todos os Usuários` para aplicá-la a todos os usuários.",
+    "policyBuilderSteps": {
+      "assignUserAndGroups": "Atribuir Usuários e Grupos",
+      "choosePolicyType": "Escolher Tipo de Política",
+      "configurePrivileges": "Configurar Privilégios"
+    },
+    "privilegesLabel": "Selecione um conjunto de privilégios a serem permitidos.",
+    "resourceDescription": "Pesquise por recursos específicos aos quais a política deve se aplicar. Se <bold>nenhum</bold> for selecionado, a política se aplicará a <bold>todos</bold> os recursos do tipo especificado.",
+    "resourceTypeDescription": "Selecione os tipos de recursos aos quais esta política deve se aplicar. Se <bold>nenhum</bold> for selecionado, a política se aplicará a <bold>todos</bold> os tipos de recursos.",
+    "searchPolicies": "Pesquisar políticas...",
+    "successfullyActivatedPolicy": "Política ativada com sucesso.",
+    "successfullyDeactivatedPolicy": "Política desativada com sucesso.",
+    "successfullyRemovedPolicy": "Política removida com sucesso.",
+    "successfullySavedPolicy": "Política salva com sucesso.",
+    "typeOfPolicyDescriptionPlatform_component": "O tipo de política <bold>Plataforma</bold> permite que você atribua privilégios de nível superior do DataHub aos usuários. Isso inclui gerenciar usuários e grupos, criar políticas, visualizar dashboards analíticos e mais.<br /><br />",
+    "typeOfPolicyDescriptionMetadata_component": "O tipo de política <bold>Metadados</bold> permite que você atribua privilégios de metadados aos usuários. Isso inclui a capacidade de manipular metadados como propriedade, tags, documentação associada a Conjuntos de Dados, Gráficos, Dashboards e mais.",
+    "typeOfPolicyToCreate": "O tipo de política que você gostaria de criar."
+  },
+  "placeholder": {
+    "addDescriptionForNewTag": "Adicione uma descrição para sua nova tag...",
+    "dataAnalyst": "Analista de Dados",
+    "datasetsDashboardsChartsAndMore": "Conjuntos de Dados, Dashboards, Gráficos e mais...",
+    "domainDescription": "Uma descrição para seu domínio",
+    "domainDescriptionPlaceHolder": "Aplicar a TODOS os domínios por padrão. Selecione domínios específicos para aplicar a domínios específicos.",
+    "domainName": "Um nome para seu Domínio",
+    "filterWithName": "Filtrar {{name}}...",
+    "groupDescription": "Uma descrição para seu grupo",
+    "groupName": "Um nome para seu grupo",
+    "newPolicyDescriptionPlaceHolder": "Sua descrição de política",
+    "resourceDescriptionPlaceHolder": "Aplicar a TODOS os recursos por padrão. Selecione recursos específicos para aplicar.",
+    "resourceTypeDescriptionPlaceHolder": "Aplicar a TODOS os tipos de recursos por padrão. Selecione tipos para aplicar a tipos específicos de entidades.",
+    "revenueDashboards": "Dashboards de Receita",
+    "searchByWithName": "Pesquisar por {{name}}...",
+    "searchFor": "Pesquisar por",
+    "searchForUsersOrGroups": "Pesquisar por usuários ou grupos",
+    "searchForWithName": "Pesquisar por {{name}}...",
+    "searchInWithName": "Pesquisar em {{name}}...",
+    "searchWithName": "Pesquisar {{name}}...",
+    "selectAColumn": "Selecionar coluna",
+    "shortLabelForLink": "Um rótulo curto para este link",
+    "viewUsefulForDataAnalysts": "Esta Visualização é útil para Analistas de Dados",
+    "yourPolicyNamePlaceholder": "Nome da sua política"
+  },
+  "post": {
+    "descriptionDescription": "O conteúdo principal para seu novo post.",
+    "descriptionPlaceholder": "Sua descrição do post",
+    "imageUrl": "URL da Imagem",
+    "imageUrlDescription": "Uma URL para uma imagem que você deseja exibir em seu post com link.",
+    "imageUrlPlaceholder": "URL da imagem do seu post",
+    "linkUrl": "URL do Link",
+    "linkUrlDescription": "Para onde os usuários serão direcionados quando clicarem neste post.",
+    "linkUrlPlaceholder": "URL do link do seu post",
+    "postType": "Tipo de Post",
+    "titleDescription": "O título para seu novo post.",
+    "titlePlaceholder": "Título do seu post"
+  },
+  "relatedTermType": {
+    "containedBy": "Contido por",
+    "contains": "Contém",
+    "inheritedBy": "Herdado por",
+    "inherits": "Herde"
+  },
+  "reporting": {
+    "closeColumnHistory": "Fechar histórico da coluna",
+    "columnCount": "Contagem de Colunas",
+    "columnCountOverTime": "Contagem de Colunas ao Longo do Tempo",
+    "columnCountUnknown": "Contagem de Colunas Desconhecida",
+    "columnStats": "Estatísticas da Coluna",
+    "createdOnDateWithText": "Criado {{text}} em {{date}}",
+    "createdOnWithDate": "Criado em {{date}}",
+    "distinctCount": "Contagem Distinta",
+    "distinctCountOverTime": "Contagem Distinta ao Longo do Tempo",
+    "distinctPercent": "Distinto %",
+    "distinctPercentageOverTime": "Percentual Distinto ao Longo do Tempo",
+    "firstReportedOn": "Primeiro relatado em {{date}}",
+    "historicalColumnStats": "Estatísticas Históricas da Coluna",
+    "historicalTableStats": "Estatísticas Históricas da Tabela",
+    "lastObservedDate": "Última observação {{date}}",
+    "lastObservedOnDate": "Última observação em {{date}}",
+    "lastRunWithTime": "Última execução {{time}}",
+    "lastSynchronized": "Última Sincronização",
+    "lastSynchronizedDescriptionBeforePlatform": "Isso representa o momento em que a entidade foi sincronizada pela última vez com ",
+    "lastSynchronizedDescriptionNoPlatform": "Isso representa o momento em que a entidade foi sincronizada pela última vez com a plataforma de origem",
+    "lastSynchronizedDescriptionWithPlatform": "Isso representa o momento em que a entidade foi sincronizada pela última vez com a plataforma",
+    "lastSynchronizedWithNameAndTime_component": "Esta {{name}} foi sincronizada pela última vez em <b>{{time}}</b>",
+    "latestStats": "Últimas Estatísticas",
+    "mean": "Média",
+    "median": "Mediana",
+    "nullCount": "Contagem de Nulos",
+    "nullCountOverTime": "Contagem de Nulos ao Longo do Tempo",
+    "nullPercent": "Nulo %",
+    "nullPercentageOverTime": "Percentual de Nulos ao Longo do Tempo",
+    "profilingHistory": "Histórico de Perfilagem",
+    "profilingRuns": "Execuções de Perfilagem",
+    "queryByMonth_interval": "(0-1)[{{count}} consulta / mês];(2-inf)[{{count}} consultas / mês;]",
+    "recentProfiles": "Perfis Recentes",
+    "relationshipAddedByUser_component": "Relacionamento adicionado por <bold>{{userName}}</bold>",
+    "relationshipAddedByUserOnDate_component": "Relacionamento adicionado por <bold>{{userName}}</bold> em <bold>{{date}}</bold>",
+    "reportedOnAtWithDateTime": "Relatado em {{date}} às {{time}}",
+    "reportedWithDate": "Relatado {{date}}",
+    "rowCount": "Contagem de Linhas",
+    "rowCountOverTime": "Contagem de Linhas ao Longo do Tempo",
+    "rowCountUnknown": "Contagem de Linhas Desconhecida",
+    "sampleValues": "Valores Amostrais",
+    "showingProfileFromAtWithDateTime": "Exibindo perfil de {{date}} às {{time}}",
+    "stdDev": "Desv. Padrão",
+    "synchronizedInThePastMonth_component": "Sincronizado no <b>mês passado</b>",
+    "synchronizedInThePastWeek_component": "Sincronizado na <b>última semana</b>",
+    "synchronizedMoreThanAMonthAgo_component": "Sincronizado <b>há mais de um mês</b>",
+    "synchronizedOnWithTime": "Sincronizado em {{time}}",
+    "tableStats": "Estatísticas da Tabela",
+    "viewBlamePriorToThisVersion": "Visualizar culpa antes desta versão",
+    "viewColumnHistory": "Visualizar histórico da coluna",
+    "viewingProfilingHistoryForThePast": "Visualizando histórico de perfilagem para o passado",
+    "viewingStatsForColumn": "Visualizando estatísticas para a coluna"
   },
   "search": {
     "chooseAnOwnerType": "Escolha um tipo de proprietário",
     "didYouMean_component": "Você quis dizer <suggest>{{suggestText}}</suggest>",
-    "exploreAll": "Explorar todos",
+    "exploreAll": "Explorar tudo",
     "loadResultError": "Falha ao carregar resultados",
     "modal": {
-      "exitSelectionContent_interval": "(0-1)[Você tem certeza de que deseja sair? {{count}} seleção será desmarcada.];(2-inf)[Você tem certeza de que deseja sair? {{count}} seleções serão desmarcadas.];",
+      "exitSelectionContent_interval": "(0-1)[Tem certeza de que deseja sair? {{count}} seleção será limpa.];(2-inf)[Tem certeza de que deseja sair? {{count}} seleções serão limpas.];",
       "exitSelectionTitle": "Sair da Seleção"
     },
-    "moreYouMayBeInterestedIn": "Mais itens que podem te interessar",
+    "moreYouMayBeInterestedIn": "Mais em que você pode estar interessado",
     "noResultsFoundFor": "Nenhum resultado encontrado para '{{name}}'",
     "orSearchingFor_component": " ou procurando por <suggest>{{suggestText}}</suggest>",
-    "searchError": "Falha ao completar a pesquisa",
+    "searchError": "Falha ao concluir a pesquisa",
     "seeAllResultsWithName_component": "Veja todos os resultados de <bold>{{name}}</bold>",
     "selectWithName": "Selecionar {{name}}",
     "showingIndexOfTotalPost_component": "<bold>{{startCount}} - {{endCount}}</bold> de <bold>{{totalCount}}</bold>",
-    "showingNumberOfTotalResults_component_interval": "(0-1)[Mostrando <bold>{{number}} - {{index}}</bold> de {{count}} resultado];(2-inf)[Mostrando <bold>{{number}} - {{index}}</bold> de {{count}} resultados];",
+    "showingNumberOfTotalResults_component_interval": "(0-1)[Exibindo <bold>{{number}} - {{index}}</bold> de {{count}} resultado];(2-inf)[Exibindo <bold>{{number}} - {{index}}</bold> de {{count}} resultados];",
     "try_component": "Tente <suggest>{{refineSearchText}}</suggest>",
     "tryOptionFilter": "limpar todos os filtros",
     "tryOptionFilterAndViewUrn": "limpar todos os filtros e a visualização selecionada",
     "tryOptionViewUrn": "limpar a visualização selecionada",
     "userOrGroupLabel": "Encontre um usuário ou grupo",
-    "viewAllResultsFor": "Ver todos os resultados para"
+    "viewAllResultsFor": "Veja todos os resultados para"
+  },
+  "settings": {
+    "aDescriptionForYourToken": "Uma descrição para seu token",
+    "aNameForYourToken": "Um nome para seu token",
+    "anOptionalDescriptionForYourNewToken": "Uma descrição opcional para seu novo token.",
+    "enterATokenName": "Digite um nome para o token.",
+    "giveYourNewTokenAName": "Dê um nome para seu novo token.",
+    "homePagePosts": "Postagens na Página Inicial",
+    "homePagePostsDescription": "Visualize e gerencie postagens fixadas que aparecem para todos os usuários na página de entrada.",
+    "manageIdentitiesDescription": "Visualize seus usuários e grupos do DataHub. Execute ações administrativas.",
+    "manageOwnershipTypeDescription": "Crie, edite e remova Tipos de Propriedade personalizados.",
+    "manageWithName": "Gerenciar {{name}}",
+    "manageYourAppearanceSettings": "Gerencie suas configurações de aparência.",
+    "manageYourSettings": "Gerencie suas configurações do DataHub.",
+    "myViews": "Minhas Visualizações",
+    "noOwnershipTypesFound": "Nenhum Tipo de Propriedade encontrado!",
+    "ownershipType": "Tipo de Propriedade",
+    "ownershipTypes": "Tipos de Propriedade",
+    "showSimplifiedHomepage": "Mostrar página inicial simplificada",
+    "showSimplifiedHomepageDescription": "Limita os cartões de navegação de entidades na página inicial a Domínios, Gráficos, Conjuntos de Dados, Dashboards e Termos do Glossário",
+    "usersAndGroups": "Usuários e Grupos"
+  },
+  "share": {
+    "checkoutThisOn": "Confira este {{type}} no DataHub: {{linkText}}",
+    "csv": {
+      "error": {
+        "description": "O arquivo CSV não pôde ser baixado",
+        "message": "Falha no Download"
+      },
+      "preparing": {
+        "description": "Criando CSV para download",
+        "descriptionWithCount_interval": "(0-1)[Criando CSV com {{count}} entidade para download];(2-inf)[Criando CSV com {{count}} entidades para download];",
+        "message": "Preparando Download"
+      }
+    },
+    "downloadAs": "Baixar como...",
+    "scheduleADemo": "Agendar uma Demonstração",
+    "shareThisViaMail": "Compartilhar este {{type}} por e-mail",
+    "slackChannel": "Canal do Slack",
+    "viewSource": "Ver Fonte"
+  },
+  "shared": {
+    "addOwners": "Adicionar Proprietários",
+    "appliedTo": "Aplicado a",
+    "colorSaved": "Cor Salva",
+    "descriptionUpdated": "Descrição Atualizada",
+    "failedToSaveTagColor": "Falha ao salvar cor da tag",
+    "failedToUpdateDescription": "Falha ao atualizar a descrição",
+    "noEntities": "Nenhuma entidade"
+  },
+  "term": {
+    "noTermNorGroup": "Nenhum Termo ou Grupo de Termos"
+  },
+  "test": {
+    "allFailing": "Todos os testes estão falhando",
+    "allPassing": "Todos os testes estão passando",
+    "failing": "Falhando",
+    "noEvaluations": "Nenhuma Avaliação",
+    "noTestHaveRun": "Nenhum teste foi executado",
+    "noTestsFound": "Nenhum Teste Encontrado",
+    "passing": "Passando",
+    "someFailing": "Alguns testes estão falhando",
+    "testResults": "Resultados dos Testes",
+    "testResume": "{{passingCount}} testes passando, {{failingCount}} testes falhando",
+    "testStatusTooltip": "Este status é baseado na execução mais recente de cada teste."
+  },
+  "token": {
+    "accessToken": "Tokens de Acesso",
+    "basedAuthIsDisabled": "A autenticação baseada em tokens está atualmente desativada. Entre em contato com o administrador do DataHub para ativar este recurso.",
+    "expireAt": "Expira em",
+    "expireIn": "Expira em",
+    "generateNewToken": "Gerar novo token",
+    "learnMoreLink": "Para saber mais sobre as APIs do DataHub, consulte a",
+    "learnMoreLinkText": "Documentação do DataHub",
+    "makeSureYouCopyYourAccessToken": "Certifique-se de copiar seu token de acesso pessoal agora. Você não poderá vê-lo novamente.",
+    "manageAccessToken": "Gerenciar Tokens de Acesso",
+    "manageAccessTokenForUseWithAPI": "Gerencie Tokens de Acesso para uso com as APIs do DataHub.",
+    "newPersonalAccessToken": "Novo Token de Acesso Pessoal",
+    "noAccessToken": "Nenhum Token de Acesso!",
+    "personal": "Pessoal",
+    "personalAccessToken": "Tokens de Acesso Pessoal",
+    "personalAccessTokenDescription": "Tokens de Acesso Pessoal permitem que você faça solicitações programáticas às APIs do DataHub. Eles herdam suas permissões e têm uma vida útil limitada. Não compartilhe Tokens de Acesso Pessoal.",
+    "tokenWillExpireOnAt": "O token expirará em {{date}} às {{time}}}.",
+    "tokenWillNeverExpire": "Este token nunca expirará.",
+    "toUseATokenExplanation_component": "Para usar o token, forneça-o como um <typographyText>Bearer</typographyText> no cabeçalho <typographyText>Authorization</typographyText> ao fazer solicitações de API:",
+    "validateTokenRevoke": "Tem certeza de que deseja revogar este token?",
+    "validateTokenRevokeDescription": "Quem estiver usando este token não poderá mais acessar a API do DataHub. Você não pode desfazer esta ação."
+  },
+  "user": {
+    "enterYourEmail": "Digite seu e-mail",
+    "editingImageUrlHasBeenDisabled": "Edição do URL da imagem foi desativada",
+    "editProfile": "Editar perfil",
+    "assignRoleError": "Falha ao atribuir a função {{roleName}} ao usuário {{username}}",
+    "assignRoleSuccess": "Função {{roleName}} atribuída ao usuário {{username}}!",
+    "assignRoleTitle": "Você gostaria de atribuir a função {{roleName}} ao usuário {{username}}",
+    "error": {
+      "fetchFromCache": "Não foi possível buscar o usuário logado do cache.",
+      "notFound": "Não foi possível encontrar o usuário logado."
+    },
+    "inviteUser": "Convidar Usuários",
+    "noUser": "Nenhum usuário",
+    "removeRoleError": "Falha ao remover a função de {{username}}",
+    "removeRoleSuccess": "Função removida do usuário {{username}}!",
+    "removeRoleTitle": "Você gostaria de remover a função existente de {{username}}?"
   }
 }
