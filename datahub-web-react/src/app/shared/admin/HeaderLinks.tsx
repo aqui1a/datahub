@@ -10,7 +10,8 @@ import {
     GlobalOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { Button, Dropdown, Tooltip } from 'antd';
+import { Button, Dropdown, Menu, Tooltip } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useAppConfig, useBusinessAttributesFlag } from '../../useAppConfig';
 import { ANTD_GRAY } from '../../entity/shared/constants';
 import { HOME_PAGE_INGESTION_ID } from '../../onboarding/config/HomePageOnboardingConfig';
@@ -58,6 +59,7 @@ interface Props {
 }
 
 export function HeaderLinks(props: Props) {
+    const { t } = useTranslation();
     const { areLinksHidden } = props;
     const me = useUserContext();
     const { config } = useAppConfig();
@@ -133,20 +135,65 @@ export function HeaderLinks(props: Props) {
                 <LinkWrapper>
                     <Link to="/analytics">
                         <Button type="text">
-                            <Tooltip title="View DataHub usage analytics">
+                            <Tooltip title={t('adminHeader.analyticsTitle')}>
                                 <NavTitleContainer>
                                     <BarChartOutlined />
-                                    <NavTitleText>Analytics</NavTitleText>
+                                    <NavTitleText>{t('adminHeader.analyticsText')}</NavTitleText>
                                 </NavTitleContainer>
                             </Tooltip>
                         </Button>
                     </Link>
                 </LinkWrapper>
             )}
-            <Dropdown trigger={['click']} menu={{ items }}>
+            <Dropdown
+                trigger={['click']}
+                overlay={
+                    <Menu>
+                        <MenuItem key="0">
+                            <Link to="/glossary">
+                                <NavTitleContainer>
+                                    <BookOutlined style={{ fontSize: '14px', fontWeight: 'bold' }} />
+                                    <NavTitleText>{t('adminHeader.glossaryText')}</NavTitleText>
+                                </NavTitleContainer>
+                                <NavTitleDescription>{t('adminHeader.glossaryDescription')}</NavTitleDescription>
+                            </Link>
+                        </MenuItem>
+                        <MenuItem key="1">
+                            <Link to="/domains">
+                                <NavTitleContainer>
+                                    <DomainIcon
+                                        style={{
+                                            fontSize: 14,
+                                            fontWeight: 'bold',
+                                        }}
+                                    />
+                                    <NavTitleText>{t('adminHeader.domainsText')}</NavTitleText>
+                                </NavTitleContainer>
+                                <NavTitleDescription>{t('adminHeader.domainsDescription')}</NavTitleDescription>
+                            </Link>
+                        </MenuItem>
+                        {businessAttributesFlag && (
+                            <MenuItem key="2">
+                                <Link to="/business-attribute">
+                                    <NavTitleContainer>
+                                        <GlobalOutlined
+                                            style={{
+                                                fontSize: 14,
+                                                fontWeight: 'bold',
+                                            }}
+                                        />
+                                        <NavTitleText>Business Attribute</NavTitleText>
+                                    </NavTitleContainer>
+                                    <NavTitleDescription>Universal field for data consistency</NavTitleDescription>
+                                </Link>
+                            </MenuItem>
+                        )}
+                    </Menu>
+                }
+            >
                 <LinkWrapper>
                     <Button type="text">
-                        <SolutionOutlined /> Govern <DownOutlined style={{ fontSize: '6px' }} />
+                        <SolutionOutlined /> {t('common.govern')} <DownOutlined style={{ fontSize: '6px' }} />
                     </Button>
                 </LinkWrapper>
             </Dropdown>
@@ -154,10 +201,10 @@ export function HeaderLinks(props: Props) {
                 <LinkWrapper>
                     <Link to="/ingestion">
                         <Button id={HOME_PAGE_INGESTION_ID} type="text">
-                            <Tooltip title="Connect DataHub to your organization's data sources">
+                            <Tooltip title={t('adminHeader.ingestionTitle')}>
                                 <NavTitleContainer>
                                     <ApiOutlined />
-                                    <NavTitleText>Ingestion</NavTitleText>
+                                    <NavTitleText>{t('adminHeader.ingestionText')}</NavTitleText>
                                 </NavTitleContainer>
                             </Tooltip>
                         </Button>
@@ -168,7 +215,7 @@ export function HeaderLinks(props: Props) {
                 <LinkWrapper style={{ marginRight: 12 }}>
                     <Link to="/settings">
                         <Button type="text">
-                            <Tooltip title="Manage your DataHub settings">
+                            <Tooltip title={t('adminHeader.settingsTitle')}>
                                 <SettingOutlined />
                             </Tooltip>
                         </Button>

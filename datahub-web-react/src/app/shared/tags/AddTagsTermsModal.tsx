@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { message, Button, Modal, Select, Typography, Tag as CustomTag } from 'antd';
 import styled from 'styled-components';
 
+import { useTranslation } from 'react-i18next';
 import { useGetSearchResultsLazyQuery } from '../../../graphql/search.generated';
 import { EntityType, Tag, Entity, ResourceRefInput } from '../../../types.generated';
 import CreateTagModal from './CreateTagModal';
@@ -101,6 +102,7 @@ export default function EditTagTermsModal({
     defaultValues = [],
     onOkOverride,
 }: EditTagsModalProps) {
+    const { t } = useTranslation();
     const entityRegistry = useEntityRegistry();
     const [inputValue, setInputValue] = useState('');
     const [showCreateModal, setShowCreateModal] = useState(false);
@@ -176,7 +178,10 @@ export default function EditTagTermsModal({
     ) {
         tagSearchOptions?.push(
             <Select.Option value={CREATE_TAG_VALUE} key={CREATE_TAG_VALUE}>
-                <Typography.Link> Create {inputValue}</Typography.Link>
+                <Typography.Link>
+                    {' '}
+                    {t('common.create')} {inputValue}
+                </Typography.Link>
             </Select.Option>,
         );
     }
@@ -272,7 +277,9 @@ export default function EditTagTermsModal({
             .then(({ errors }) => {
                 if (!errors) {
                     message.success({
-                        content: `Added ${type === EntityType.GlossaryTerm ? 'Terms' : 'Tags'}!`,
+                        content: `${t('common.added')} ${
+                            type === EntityType.GlossaryTerm ? t('common.terms') : 'Tags'
+                        }!`,
                         duration: 2,
                     });
                 }
@@ -280,7 +287,10 @@ export default function EditTagTermsModal({
             .catch((e) => {
                 message.destroy();
                 message.error(
-                    handleBatchError(urns, e, { content: `Failed to add: \n ${e.message || ''}`, duration: 3 }),
+                    handleBatchError(urns, e, {
+                        content: `${t('crud.error.add')}: \n ${e.message || ''}`,
+                        duration: 3,
+                    }),
                 );
             })
             .finally(() => {
@@ -302,7 +312,9 @@ export default function EditTagTermsModal({
             .then(({ errors }) => {
                 if (!errors) {
                     message.success({
-                        content: `Added ${type === EntityType.GlossaryTerm ? 'Terms' : 'Tags'}!`,
+                        content: `${t('common.added')} ${
+                            type === EntityType.GlossaryTerm ? t('common.terms') : 'Tags'
+                        }!`,
                         duration: 2,
                     });
                 }
@@ -310,7 +322,10 @@ export default function EditTagTermsModal({
             .catch((e) => {
                 message.destroy();
                 message.error(
-                    handleBatchError(urns, e, { content: `Failed to add: \n ${e.message || ''}`, duration: 3 }),
+                    handleBatchError(urns, e, {
+                        content: `${t('crud.error.add')}: \n ${e.message || ''}`,
+                        duration: 3,
+                    }),
                 );
             })
             .finally(() => {
@@ -332,7 +347,9 @@ export default function EditTagTermsModal({
             .then(({ errors }) => {
                 if (!errors) {
                     message.success({
-                        content: `Removed ${type === EntityType.GlossaryTerm ? 'Terms' : 'Tags'}!`,
+                        content: `${t('common.removed')} ${
+                            type === EntityType.GlossaryTerm ? t('common.terms') : 'Tags'
+                        }!`,
                         duration: 2,
                     });
                 }
@@ -340,7 +357,10 @@ export default function EditTagTermsModal({
             .catch((e) => {
                 message.destroy();
                 message.error(
-                    handleBatchError(urns, e, { content: `Failed to remove: \n ${e.message || ''}`, duration: 3 }),
+                    handleBatchError(urns, e, {
+                        content: `${t('crud.error.remove')}: \n ${e.message || ''}`,
+                        duration: 3,
+                    }),
                 );
             })
             .finally(() => {
@@ -362,7 +382,9 @@ export default function EditTagTermsModal({
             .then(({ errors }) => {
                 if (!errors) {
                     message.success({
-                        content: `Removed ${type === EntityType.GlossaryTerm ? 'Terms' : 'Tags'}!`,
+                        content: `${t('common.removed')} ${
+                            type === EntityType.GlossaryTerm ? t('common.terms') : 'Tags'
+                        }!`,
                         duration: 2,
                     });
                 }
@@ -370,7 +392,10 @@ export default function EditTagTermsModal({
             .catch((e) => {
                 message.destroy();
                 message.error(
-                    handleBatchError(urns, e, { content: `Failed to remove: \n ${e.message || ''}`, duration: 3 }),
+                    handleBatchError(urns, e, {
+                        content: `${t('crud.error.remove')}: \n ${e.message || ''}`,
+                        duration: 3,
+                    }),
                 );
             })
             .finally(() => {
@@ -442,13 +467,15 @@ export default function EditTagTermsModal({
 
     return (
         <Modal
-            title={`${operationType === OperationType.ADD ? 'Add' : 'Remove'} ${entityRegistry.getEntityName(type)}s`}
-            open={open}
+            title={`${
+                operationType === OperationType.ADD ? t('common.add') : t('common.remove')
+            } ${entityRegistry.getEntityName(type)}s`}
+            visible={visible}
             onCancel={onCloseModal}
             footer={
                 <>
                     <Button onClick={onCloseModal} type="text">
-                        Cancel
+                        {t('common.cancel')}
                     </Button>
                     <Button
                         id="addTagButton"
@@ -456,7 +483,7 @@ export default function EditTagTermsModal({
                         onClick={onOk}
                         disabled={urns.length === 0 || disableAction}
                     >
-                        Done
+                        {t('common.done')}
                     </Button>
                 </>
             }
@@ -470,7 +497,9 @@ export default function EditTagTermsModal({
                     mode="multiple"
                     ref={inputEl}
                     filterOption={false}
-                    placeholder={`Search for ${entityRegistry.getEntityName(type)?.toLowerCase()}...`}
+                    placeholder={`${t('placeholder.searchFor')} ${entityRegistry
+                        .getEntityName(type)
+                        ?.toLowerCase()}...`}
                     showSearch
                     defaultActiveFirstOption={false}
                     onSelect={(asset: any) => onSelectValue(asset)}

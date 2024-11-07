@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { message, Modal, Button, Form, Select, Tag } from 'antd';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { useAddGroupMembersMutation } from '../../../graphql/group.generated';
 import { CorpUser, Entity, EntityType } from '../../../types.generated';
 import { useGetSearchResultsLazyQuery } from '../../../graphql/search.generated';
@@ -29,7 +30,8 @@ const StyleTag = styled(Tag)`
     align-items: center;
 `;
 
-export const AddGroupMembersModal = ({ urn, open, onCloseModal, onSubmit }: Props) => {
+export const AddGroupMembersModal = ({ urn, visible, onCloseModal, onSubmit }: Props) => {
+    const { t } = useTranslation();
     const entityRegistry = useEntityRegistry();
     const [selectedMembers, setSelectedMembers] = useState<any[]>([]);
     const [inputValue, setInputValue] = useState('');
@@ -115,11 +117,11 @@ export const AddGroupMembersModal = ({ urn, open, onCloseModal, onSubmit }: Prop
                     userUrns: selectedMemberUrns,
                 },
             });
-            message.success({ content: 'Group members added!', duration: 3 });
+            message.success({ content: t('common.addgroupMembers'), duration: 3 });
         } catch (e: unknown) {
             message.destroy();
             if (e instanceof Error) {
-                message.error({ content: `Failed to group members: \n ${e.message || ''}`, duration: 3 });
+                message.error({ content: `${'common.failedAddgroupMembers'} \n ${e.message || ''}`, duration: 3 });
             }
         } finally {
             onSubmit();
@@ -133,16 +135,16 @@ export const AddGroupMembersModal = ({ urn, open, onCloseModal, onSubmit }: Prop
 
     return (
         <Modal
-            title="Add group members"
-            open={open}
+            title={t('common.addgroupMembers')}
+            visible={visible}
             onCancel={onModalClose}
             footer={
                 <>
                     <Button onClick={onModalClose} type="text">
-                        Cancel
+                        {t('common.cancel')}
                     </Button>
                     <Button disabled={selectedMembers.length === 0} onClick={onAdd}>
-                        Add
+                        {t('common.add')}
                     </Button>
                 </>
             }
@@ -155,7 +157,7 @@ export const AddGroupMembersModal = ({ urn, open, onCloseModal, onSubmit }: Prop
                         defaultOpen
                         mode="multiple"
                         ref={inputEl}
-                        placeholder="Search for users..."
+                        placeholder={t('onBoarding.search.searchOwners')}
                         showSearch
                         filterOption={false}
                         defaultActiveFirstOption={false}

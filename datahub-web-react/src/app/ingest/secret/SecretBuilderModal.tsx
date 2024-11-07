@@ -1,5 +1,6 @@
 import { Button, Form, Input, Modal, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useEnterKeyListener } from '../../shared/useEnterKeyListener';
 import { SecretBuilderState } from './types';
 
@@ -19,6 +20,7 @@ type Props = {
 export const SecretBuilderModal = ({ initialState, editSecret, open, onSubmit, onUpdate, onCancel }: Props) => {
     const [createButtonEnabled, setCreateButtonEnabled] = useState(false);
     const [form] = Form.useForm();
+    const { t } = useTranslation();
 
     // Handle the Enter press
     useEnterKeyListener({
@@ -46,7 +48,7 @@ export const SecretBuilderModal = ({ initialState, editSecret, open, onSubmit, o
         onCancel?.();
     };
 
-    const titleText = editSecret ? 'Edit Secret' : 'Create a new Secret';
+    const titleText = editSecret ? t('ingest.editSecret') : t('ingest.createANewSecret');
 
     return (
         <Modal
@@ -58,7 +60,7 @@ export const SecretBuilderModal = ({ initialState, editSecret, open, onSubmit, o
             footer={
                 <>
                     <Button onClick={onCloseModal} type="text">
-                        Cancel
+                        {t('common.cancel')}
                     </Button>
                     <Button
                         data-testid="secret-modal-create-button"
@@ -87,7 +89,7 @@ export const SecretBuilderModal = ({ initialState, editSecret, open, onSubmit, o
                         }}
                         disabled={!createButtonEnabled}
                     >
-                        {!editSecret ? 'Create' : 'Update'}
+                        {!editSecret ? t('common.create') : t('crud.update')}
                     </Button>
                 </>
             }
@@ -100,10 +102,8 @@ export const SecretBuilderModal = ({ initialState, editSecret, open, onSubmit, o
                     setCreateButtonEnabled(!form.getFieldsError().some((field) => field.errors.length > 0))
                 }
             >
-                <Form.Item label={<Typography.Text strong>Name</Typography.Text>}>
-                    <Typography.Paragraph>
-                        Give your secret a name. This is what you&apos;ll use to reference the secret from your recipes.
-                    </Typography.Paragraph>
+                <Form.Item label={<Typography.Text strong>{t('common.name')}</Typography.Text>}>
+                    <Typography.Paragraph>{t('ingest.secretNameDescription')}</Typography.Paragraph>
                     <Form.Item
                         data-testid="secret-modal-name-input"
                         name={NAME_FIELD_NAME}
@@ -122,13 +122,14 @@ export const SecretBuilderModal = ({ initialState, editSecret, open, onSubmit, o
                         ]}
                         hasFeedback
                     >
-                        <Input placeholder="A name for your secret" disabled={editSecret !== undefined} />
+                        <Input
+                            placeholder={t('ingest.secretNameInputPlaceholder')}
+                            disabled={editSecret !== undefined}
+                        />
                     </Form.Item>
                 </Form.Item>
-                <Form.Item label={<Typography.Text strong>Value</Typography.Text>}>
-                    <Typography.Paragraph>
-                        The value of your secret, which will be encrypted and stored securely within DataHub.
-                    </Typography.Paragraph>
+                <Form.Item label={<Typography.Text strong>{t('common.value')}</Typography.Text>}>
+                    <Typography.Paragraph>{t('ingest.secretValueDescription')}</Typography.Paragraph>
                     <Form.Item
                         data-testid="secret-modal-value-input"
                         name={VALUE_FIELD_NAME}
@@ -142,20 +143,18 @@ export const SecretBuilderModal = ({ initialState, editSecret, open, onSubmit, o
                         ]}
                         hasFeedback
                     >
-                        <Input.TextArea placeholder="The value of your secret" autoComplete="false" />
+                        <Input.TextArea placeholder={t('ingest.secretValueInputPlaceholder')} autoComplete="false" />
                     </Form.Item>
                 </Form.Item>
-                <Form.Item label={<Typography.Text strong>Description</Typography.Text>}>
-                    <Typography.Paragraph>
-                        An optional description to help keep track of your secret.
-                    </Typography.Paragraph>
+                <Form.Item label={<Typography.Text strong>{t('common.description')}</Typography.Text>}>
+                    <Typography.Paragraph>{t('ingest.secretDescriptionDescription')}</Typography.Paragraph>
                     <Form.Item
                         data-testid="secret-modal-description-input"
                         name={DESCRIPTION_FIELD_NAME}
                         rules={[{ whitespace: true }, { min: 1, max: 500 }]}
                         hasFeedback
                     >
-                        <Input.TextArea placeholder="A description for your secret" />
+                        <Input.TextArea placeholder={t('ingest.secretDescriptionInputPlaceholder')} />
                     </Form.Item>
                 </Form.Item>
             </Form>

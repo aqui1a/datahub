@@ -1,5 +1,6 @@
 import { Modal, Button } from 'antd';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Query from '../Queries/Query';
 
 export type AssertionsSummary = {
@@ -15,9 +16,10 @@ type Props = {
     onClose: () => void;
 };
 
-export const DatasetAssertionLogicModal = ({ logic, open, onClose }: Props) => {
+export const DatasetAssertionLogicModal = ({ logic, visible, onClose }: Props) => {
+    const { t } = useTranslation();
     return (
-        <Modal open={open} onCancel={onClose} footer={<Button onClick={onClose}>Close</Button>}>
+        <Modal visible={visible} onCancel={onClose} footer={<Button onClick={onClose}>{t('common.close')}</Button>}>
             <Query query={logic} />
         </Modal>
     );

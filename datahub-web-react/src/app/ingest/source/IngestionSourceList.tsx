@@ -5,6 +5,7 @@ import * as QueryString from 'query-string';
 import { useLocation } from 'react-router';
 import { Button, message, Modal, Pagination, Select } from 'antd';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import {
     useCreateIngestionExecutionRequestMutation,
     useCreateIngestionSourceMutation,
@@ -369,6 +370,7 @@ export const IngestionSourceList = () => {
             closable: true,
         });
     };
+    const { t } = useTranslation();
 
     const onCancel = () => {
         setIsBuildingSource(false);
@@ -379,9 +381,7 @@ export const IngestionSourceList = () => {
     return (
         <>
             {!data && loading && <Message type="loading" content="Loading ingestion sources..." />}
-            {error && (
-                <Message type="error" content="Failed to load ingestion sources! An unexpected error occurred." />
-            )}
+            {error && <Message type="error" content={t('ingest.failedToLoadIngestionSourcesAnErrorOccurred')} />}
             <SourceContainer>
                 <TabToolbar>
                     <div>
@@ -391,10 +391,10 @@ export const IngestionSourceList = () => {
                             onClick={() => setIsBuildingSource(true)}
                             data-testid="create-ingestion-source-button"
                         >
-                            <PlusOutlined /> Create new source
+                            <PlusOutlined /> {t('ingest.createNewSource')}
                         </Button>
                         <Button id={INGESTION_REFRESH_SOURCES_ID} type="text" onClick={onRefresh}>
-                            <RedoOutlined /> Refresh
+                            <RedoOutlined /> {t('common.refresh')}
                         </Button>
                     </div>
                     <FilterWrapper>
@@ -402,14 +402,14 @@ export const IngestionSourceList = () => {
                             value={sourceFilter}
                             onChange={(selection) => setSourceFilter(selection as IngestionSourceType)}
                         >
-                            <Select.Option value={IngestionSourceType.ALL}>All</Select.Option>
-                            <Select.Option value={IngestionSourceType.UI}>UI</Select.Option>
-                            <Select.Option value={IngestionSourceType.CLI}>CLI</Select.Option>
+                            <Select.Option value={IngestionSourceType.ALL}>{t('common.all')}</Select.Option>
+                            <Select.Option value={IngestionSourceType.UI}>{t('ingest.ui')}</Select.Option>
+                            <Select.Option value={IngestionSourceType.CLI}>{t('ingest.cli')}</Select.Option>
                         </StyledSelect>
 
                         <SearchBar
                             initialQuery={query || ''}
-                            placeholderText="Search sources..."
+                            placeholderText={t('ingest.searchSources')}
                             suggestions={[]}
                             style={{
                                 maxWidth: 220,

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Dropdown } from 'antd';
 import { FormOutlined, MoreOutlined } from '@ant-design/icons';
 import styled from 'styled-components/macro';
+import { useTranslation } from 'react-i18next';
 import { AndFilterInput } from '../../../../../../types.generated';
 import DownloadAsCsvButton from './DownloadAsCsvButton';
 import DownloadAsCsvModal from './DownloadAsCsvModal';
@@ -37,35 +38,28 @@ export default function SearchExtendedMenu({
     totalResults,
     setShowSelectMode,
 }: Props) {
+    const { t } = useTranslation();
     const [isDownloadingCsv, setIsDownloadingCsv] = useState(false);
     const [showDownloadAsCsvModal, setShowDownloadAsCsvModal] = useState(false);
 
-    const items = [
-        {
-            key: 0,
-            label: (
-                <MenuItemStyle data-testid="download-as-csv-menu-item">
-                    <DownloadAsCsvButton
-                        isDownloadingCsv={isDownloadingCsv}
-                        setShowDownloadAsCsvModal={setShowDownloadAsCsvModal}
-                    />
-                </MenuItemStyle>
-            ),
-        },
-        setShowSelectMode
-            ? {
-                  key: 1,
-                  label: (
-                      <MenuItemStyle>
-                          <SelectButton type="text" onClick={() => setShowSelectMode(true)}>
-                              <FormOutlined />
-                              Edit...
-                          </SelectButton>
-                      </MenuItemStyle>
-                  ),
-              }
-            : null,
-    ];
+    const menu = (
+        <Menu>
+            <MenuItem key="0" data-testid="download-as-csv-menu-item">
+                <DownloadAsCsvButton
+                    isDownloadingCsv={isDownloadingCsv}
+                    setShowDownloadAsCsvModal={setShowDownloadAsCsvModal}
+                />
+            </MenuItem>
+            {setShowSelectMode && (
+                <MenuItem key="1">
+                    <SelectButton type="text" onClick={() => setShowSelectMode(true)}>
+                        <FormOutlined />
+                        {t('common.edit')}
+                    </SelectButton>
+                </MenuItem>
+            )}
+        </Menu>
+    );
 
     return (
         <>

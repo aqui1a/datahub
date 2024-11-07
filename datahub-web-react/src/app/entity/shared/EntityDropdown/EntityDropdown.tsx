@@ -13,6 +13,7 @@ import {
     WarningOutlined,
 } from '@ant-design/icons';
 import { Redirect, useHistory } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import { EntityType } from '../../../../types.generated';
 import CreateGlossaryEntityModal from './CreateGlossaryEntityModal';
 import { UpdateDeprecationModal } from './UpdateDeprecationModal';
@@ -104,6 +105,7 @@ function EntityDropdown(props: Props) {
         options,
     } = props;
 
+    const { t } = useTranslation();
     const me = useUserContext();
     const entityRegistry = useEntityRegistry();
     const [updateDeprecation] = useUpdateDeprecationMutation();
@@ -139,11 +141,11 @@ function EntityDropdown(props: Props) {
                 },
             });
             message.destroy();
-            message.success({ content: 'Deprecation Updated', duration: 2 });
+            message.success({ content: t('deprecation.deprecationUpdated'), duration: 2 });
         } catch (e: unknown) {
             message.destroy();
             if (e instanceof Error) {
-                message.error({ content: `Failed to update Deprecation: \n ${e.message || ''}`, duration: 2 });
+                message.error({ content: `${t('crud.error.update')}\n ${e.message || ''}`, duration: 2 });
             }
         }
         refetchForEntity?.();
@@ -160,145 +162,112 @@ function EntityDropdown(props: Props) {
      */
     const deleteRedirectPath = getEntityProfileDeleteRedirectPath(entityType, entityData);
 
-    const items = [
-        menuItems.has(EntityMenuItems.COPY_URL) && navigator.clipboard
-            ? {
-                  key: 0,
-                  label: (
-                      <MenuItem
-                          onClick={() => {
-                              navigator.clipboard.writeText(pageUrl);
-                              message.info('Copied URL!', 1.2);
-                          }}
-                      >
-                          <LinkOutlined /> &nbsp; Copy Url
-                      </MenuItem>
-                  ),
-              }
-            : null,
-        menuItems.has(EntityMenuItems.UPDATE_DEPRECATION)
-            ? {
-                  key: 1,
-                  label: !entityData?.deprecation?.deprecated ? (
-                      <MenuItem onClick={() => setIsDeprecationModalVisible(true)}>
-                          <ExclamationCircleOutlined /> &nbsp; Mark as deprecated
-                      </MenuItem>
-                  ) : (
-                      <MenuItem onClick={() => handleUpdateDeprecation(false)}>
-                          <ExclamationCircleOutlined /> &nbsp; Mark as un-deprecated
-                      </MenuItem>
-                  ),
-              }
-            : null,
-        menuItems.has(EntityMenuItems.ADD_TERM)
-            ? {
-                  key: 2,
-                  label: (
-                      <StyledMenuItem
-                          data-testid="entity-menu-add-term-button"
-                          key="2"
-                          disabled={!canCreateGlossaryEntity}
-                          onClick={() => setIsCreateTermModalVisible(true)}
-                      >
-                          <MenuItem>
-                              <PlusOutlined /> &nbsp;Add Term
-                          </MenuItem>
-                      </StyledMenuItem>
-                  ),
-              }
-            : null,
-        menuItems.has(EntityMenuItems.ADD_TERM_GROUP)
-            ? {
-                  key: 3,
-                  label: (
-                      <StyledMenuItem
-                          key="3"
-                          disabled={!canCreateGlossaryEntity}
-                          onClick={() => setIsCreateNodeModalVisible(true)}
-                      >
-                          <MenuItem>
-                              <FolderAddOutlined /> &nbsp;Add Term Group
-                          </MenuItem>
-                      </StyledMenuItem>
-                  ),
-              }
-            : null,
-        !isDomainMoveHidden && menuItems.has(EntityMenuItems.MOVE)
-            ? {
-                  key: 4,
-                  label: (
-                      <StyledMenuItem
-                          data-testid="entity-menu-move-button"
-                          key="4"
-                          disabled={isMoveDisabled(entityType, entityData, me.platformPrivileges)}
-                          onClick={() => setIsMoveModalVisible(true)}
-                      >
-                          <MenuItem>
-                              <FolderOpenOutlined /> &nbsp;Move
-                          </MenuItem>
-                      </StyledMenuItem>
-                  ),
-              }
-            : null,
-        menuItems.has(EntityMenuItems.DELETE)
-            ? {
-                  key: 5,
-                  label: (
-                      <StyledMenuItem
-                          key="5"
-                          disabled={isDeleteDisabled(entityType, entityData, me.platformPrivileges)}
-                          onClick={onDeleteEntity}
-                      >
-                          <Tooltip
-                              title={
-                                  shouldDisplayChildDeletionWarning(entityType, entityData, me.platformPrivileges)
-                                      ? `Can't delete ${entityRegistry.getEntityName(entityType)} with ${
-                                            isDomainEntity ? 'sub-domain' : 'child'
-                                        } entities.`
-                                      : undefined
-                              }
-                          >
-                              <MenuItem data-testid="entity-menu-delete-button">
-                                  <DeleteOutlined /> &nbsp;Delete
-                              </MenuItem>
-                          </Tooltip>
-                      </StyledMenuItem>
-                  ),
-              }
-            : null,
-        menuItems.has(EntityMenuItems.CLONE)
-            ? {
-                  key: 6,
-                  label: (
-                      <StyledMenuItem
-                          key="6"
-                          disabled={!entityData?.privileges?.canManageEntity}
-                          onClick={() => setIsCloneEntityModalVisible(true)}
-                      >
-                          <MenuItem>
-                              <CopyOutlined /> &nbsp;Clone
-                          </MenuItem>
-                      </StyledMenuItem>
-                  ),
-              }
-            : null,
-        menuItems.has(EntityMenuItems.RAISE_INCIDENT)
-            ? {
-                  key: 6,
-                  label: (
-                      <StyledMenuItem key="6" disabled={false}>
-                          <MenuItem onClick={() => setIsRaiseIncidentModalVisible(true)}>
-                              <WarningOutlined /> &nbsp;Raise Incident
-                          </MenuItem>
-                      </StyledMenuItem>
-                  ),
-              }
-            : null,
-    ];
-
     return (
         <>
-            <Dropdown menu={{ items }} trigger={['click']}>
+            <Dropdown
+                overlay={
+                    <Menu>
+                        {menuItems.has(EntityMenuItems.COPY_URL) && navigator.clipboard && (
+                            <Menu.Item key="0">
+                                <MenuItem
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(pageUrl);
+                                        message.info('Copied URL!', 1.2);
+                                    }}
+                                >
+                                    <LinkOutlined /> &nbsp; {t('copy.copyURN')}
+                                </MenuItem>
+                            </Menu.Item>
+                        )}
+                        {menuItems.has(EntityMenuItems.UPDATE_DEPRECATION) && (
+                            <Menu.Item key="1">
+                                {!entityData?.deprecation?.deprecated ? (
+                                    <MenuItem onClick={() => setIsDeprecationModalVisible(true)}>
+                                        <ExclamationCircleOutlined /> &nbsp; {t('deprecation.markAsDeprecated')}
+                                    </MenuItem>
+                                ) : (
+                                    <MenuItem onClick={() => handleUpdateDeprecation(false)}>
+                                        <ExclamationCircleOutlined /> &nbsp; {t('deprecation.markAsUnDeprecated')}
+                                    </MenuItem>
+                                )}
+                            </Menu.Item>
+                        )}
+                        {menuItems.has(EntityMenuItems.ADD_TERM) && (
+                            <StyledMenuItem
+                                data-testid="entity-menu-add-term-button"
+                                key="2"
+                                disabled={!canCreateGlossaryEntity}
+                                onClick={() => setIsCreateTermModalVisible(true)}
+                            >
+                                <MenuItem>
+                                    <PlusOutlined /> &nbsp;{t('common.addTerm')}
+                                </MenuItem>
+                            </StyledMenuItem>
+                        )}
+                        {menuItems.has(EntityMenuItems.ADD_TERM_GROUP) && (
+                            <StyledMenuItem
+                                key="3"
+                                disabled={!canCreateGlossaryEntity}
+                                onClick={() => setIsCreateNodeModalVisible(true)}
+                            >
+                                <MenuItem>
+                                    <FolderAddOutlined /> &nbsp;{t('common.addTermGroup')}
+                                </MenuItem>
+                            </StyledMenuItem>
+                        )}
+                        {!isDomainMoveHidden && menuItems.has(EntityMenuItems.MOVE) && (
+                            <StyledMenuItem
+                                data-testid="entity-menu-move-button"
+                                key="4"
+                                disabled={isMoveDisabled(entityType, entityData, me.platformPrivileges)}
+                                onClick={() => setIsMoveModalVisible(true)}
+                            >
+                                <MenuItem>
+                                    <FolderOpenOutlined /> &nbsp;{t('common.move')}
+                                </MenuItem>
+                            </StyledMenuItem>
+                        )}
+                        {menuItems.has(EntityMenuItems.DELETE) && (
+                            <StyledMenuItem
+                                key="5"
+                                disabled={isDeleteDisabled(entityType, entityData, me.platformPrivileges)}
+                                onClick={onDeleteEntity}
+                            >
+                                <Tooltip
+                                    title={
+                                        shouldDisplayChildDeletionWarning(entityType, entityData, me.platformPrivileges)
+                                            ? t('entity.cantDeleteWithSubDomainEntityWithName', { name: 'name' })
+                                            : undefined
+                                    }
+                                >
+                                    <MenuItem data-testid="entity-menu-delete-button">
+                                        <DeleteOutlined /> &nbsp;{t('crud.delete')}
+                                    </MenuItem>
+                                </Tooltip>
+                            </StyledMenuItem>
+                        )}
+                        {menuItems.has(EntityMenuItems.CLONE) && (
+                            <StyledMenuItem
+                                key="6"
+                                disabled={!entityData?.privileges?.canManageEntity}
+                                onClick={() => setIsCloneEntityModalVisible(true)}
+                            >
+                                <MenuItem>
+                                    <CopyOutlined /> &nbsp;Clone
+                                </MenuItem>
+                            </StyledMenuItem>
+                        )}
+                        {menuItems.has(EntityMenuItems.RAISE_INCIDENT) && (
+                            <StyledMenuItem key="6" disabled={false}>
+                                <MenuItem onClick={() => setIsRaiseIncidentModalVisible(true)}>
+                                    <WarningOutlined /> &nbsp; {t('incident.raiseIncident')}
+                                </MenuItem>
+                            </StyledMenuItem>
+                        )}
+                    </Menu>
+                }
+                trigger={['click']}
+            >
                 <MenuIcon data-testid="entity-header-dropdown" fontSize={size} />
             </Dropdown>
             {isCreateTermModalVisible && (

@@ -13,8 +13,8 @@ type Props = {
  */
 export const PreviewViewItem = ({ key, onClick }: Props) => {
     return (
-        <MenuItemStyle key={key} onClick={onClick}>
-            <IconItemTitle tip="See the View definition." title="Preview" icon={<EyeOutlined />} />
-        </MenuItemStyle>
+        <Menu.Item key={key} onClick={onClick}>
+            <IconItemTitle tip="See the View definition" title="Preview" icon={<EyeOutlined />} />
+        </Menu.Item>
     );
 };

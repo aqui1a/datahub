@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, Dropdown, Tooltip } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
+import MenuItem from 'antd/lib/menu/MenuItem';
+import { useTranslation } from 'react-i18next';
 import { ANTD_GRAY } from '../../../../constants';
 import { MenuItemStyle } from '../../../../../view/menu/item/styledComponent';
 
@@ -41,20 +43,24 @@ type Props = {
 };
 
 export default function ActionDropdown({ name, actions, disabled }: Props) {
-    const items = actions.map((action, i) => ({
-        key: i,
-        label: (
-            <MenuItemStyle>
-                <ActionButton type="text" onClick={action.onClick}>
-                    {action.title}
-                </ActionButton>
-            </MenuItemStyle>
-        ),
-    }));
-
+    const { t } = useTranslation();
     return (
-        <Tooltip title={disabled ? 'This action is not supported for the selected types.' : ''}>
-            <Dropdown disabled={disabled} trigger={['click']} menu={{ items }}>
+        <Tooltip title={disabled ? t('common.actionNotSupportedMessage') : ''}>
+            <Dropdown
+                disabled={disabled}
+                trigger={['click']}
+                overlay={
+                    <Menu>
+                        {actions.map((action) => (
+                            <StyledMenuItem>
+                                <ActionButton type="text" onClick={action.onClick}>
+                                    {action.title}
+                                </ActionButton>
+                            </StyledMenuItem>
+                        ))}
+                    </Menu>
+                }
+            >
                 <DropdownWrapper disabled={!!disabled}>
                     {name}
                     <DownArrow />
